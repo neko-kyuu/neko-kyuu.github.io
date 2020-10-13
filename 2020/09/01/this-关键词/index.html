@@ -214,7 +214,7 @@
             <h1 style="display: none">this 关键词</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="this-关键词"><a href="#this-关键词" class="headerlink" title="this 关键词"></a>this 关键词</h2><p>本文仅讨论函数的内部属性 <strong>this</strong>在 JavaScript 中的表现</p>
+              <h1 id="this-关键词"><a href="#this-关键词" class="headerlink" title="this 关键词"></a>this 关键词</h1><p>本文仅讨论函数的内部属性 <strong>this</strong> 在 JavaScript 中的表现</p>
 <blockquote>
 <p>this引用的是函数执行的环境对象。</p>
 </blockquote>
@@ -250,7 +250,7 @@
 objectSayColor();  <span class="hljs-comment">//blue</span></code></pre>
 
 <p>即使是在全局作用域中调用<code>objectSayColor()</code>，也能得到 ”blue“ 结果，因为它的<code>this</code>值等于<code>o</code>。</p>
-<h4 id="简单的bind-实现："><a href="#简单的bind-实现：" class="headerlink" title="简单的bind()实现："></a>简单的<code>bind()</code>实现：</h4><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bind</span>(<span class="hljs-params">fn, context</span>)</span>&#123;
+<h3 id="简单的bind-实现："><a href="#简单的bind-实现：" class="headerlink" title="简单的bind()实现："></a>简单的<code>bind()</code>实现：</h3><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bind</span>(<span class="hljs-params">fn, context</span>)</span>&#123;
     <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
         <span class="hljs-keyword">return</span> fn.apply(context, <span class="hljs-built_in">arguments</span>);
     &#125;;
@@ -258,7 +258,7 @@ objectSayColor();  <span class="hljs-comment">//blue</span></code></pre>
 
 <p>在<code>bind()</code>中创建一个闭包，闭包使用<code>apply()</code>调用传入的函数，并传递<code>context</code>对象（环境）和内部函数（本例中为<code>fn</code>）的<code>arguments</code>参数。</p>
 <p>JS的原生<code>bind()</code>可以直接在函数上调用这个方法，即<code>function.bind(context)</code></p>
-<h4 id="bind-的应用场景："><a href="#bind-的应用场景：" class="headerlink" title="bind()的应用场景："></a><code>bind()</code>的应用场景：</h4><blockquote>
+<h3 id="bind-的应用场景："><a href="#bind-的应用场景：" class="headerlink" title="bind()的应用场景："></a><code>bind()</code>的应用场景：</h3><blockquote>
 <p>将某个函数指针以<strong>值</strong>的形式传递，同时该函数必须在特定环境中执行。</p>
 </blockquote>
 <p>被绑定函数主要用于事件处理程序以及<code>setTimeout()</code>和<code>setInterval()</code>。</p>
@@ -272,7 +272,7 @@ objectSayColor();  <span class="hljs-comment">//blue</span></code></pre>
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/js/">js</a>
+                      <a class="hover-with-bg" href="/categories/JS/">JS</a>
                     
                   </div>
                 
@@ -294,6 +294,12 @@ objectSayColor();  <span class="hljs-comment">//blue</span></code></pre>
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2020/09/02/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%8Epromise/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">回调函数与promise</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
