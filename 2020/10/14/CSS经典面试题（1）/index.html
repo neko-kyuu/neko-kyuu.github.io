@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>个人博客readme - Hexo</title>
+  <title>CSS经典面试题（1） - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -160,8 +160,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-10-13 16:55" pubdate>
-      2020年10月13日 下午
+    <time datetime="2020-10-14 16:56" pubdate>
+      2020年10月14日 下午
     </time>
   </div>
 
@@ -171,7 +171,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      233 字
+      1.1k 字
     </span>
   
 
@@ -181,7 +181,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      12
        分钟
     </span>
   
@@ -211,37 +211,131 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">个人博客readme</h1>
+            <h1 style="display: none">CSS经典面试题（1）</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="博客展示"><a href="#博客展示" class="headerlink" title="博客展示"></a>博客展示</h2><h3 id="登录-注册"><a href="#登录-注册" class="headerlink" title="登录/注册"></a>登录/注册</h3><p><img src="Snipaste_2020-10-13_14-22-59.png" srcset="/img/loading.gif" alt="image"></p>
-<p><img src="Snipaste_2020-10-13_14-34-55.png" srcset="/img/loading.gif" alt="image"></p>
-<p>包含表单验证功能</p>
-<p><img src="Snipaste_2020-10-13_14-36-27.png" srcset="/img/loading.gif" alt="image"></p>
-<p>这里登录验证我将用户名保存在了sessionStorage里。</p>
-<blockquote>
-<p>试用登录名neko 密码123456</p>
-</blockquote>
-<h3 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h3><p><img src="Snipaste_2020-10-13_15-55-18.png" srcset="/img/loading.gif" alt="image"></p>
-<p>首页布局为顶部-侧边布局。顶部区包括菜单栏和装饰图，鼠标悬浮在头像logo处可以登出。侧边栏包括音乐盒、日历及归档。</p>
-<p><img src="Snipaste_2020-10-13_15-55-52.png" srcset="/img/loading.gif" alt="image"></p>
-<p>正在播放的音乐底色会标橙，并且曲名会滚动显示。音乐的播放/暂停及音量控制为HTML5 audio自带的control属性。</p>
-<p><img src="Snipaste_2020-10-13_15-56-40.png" srcset="/img/loading.gif" alt="image"></p>
-<p>今日日期会显示黄色底色，点击本月的任意日期会弹出可以拖动的todo list窗口。</p>
-<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><p><img src="Snipaste_2020-10-13_16-01-19.png" srcset="/img/loading.gif" alt="image"></p>
-<p>日志页包含tabs选项卡功能。</p>
-<h3 id="归档"><a href="#归档" class="headerlink" title="归档"></a>归档</h3><p><img src="Snipaste_2020-10-13_16-15-05.png" srcset="/img/loading.gif" alt="image"></p>
-<p>归档页包含搜索功能，并且能够将搜索结果高亮特别显示。</p>
-<h3 id="画廊"><a href="#画廊" class="headerlink" title="画廊"></a>画廊</h3><p><img src="Snipaste_2020-10-13_16-16-45.png" srcset="/img/loading.gif" alt="image"></p>
-<p><img src="Snipaste_2020-10-13_16-17-15.png" srcset="/img/loading.gif" alt="image"></p>
-<p>瀑布流布局，图片支持懒加载。</p>
-<h3 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h3><p>右侧边栏包含<code>︿</code>置顶功能。</p>
+              <h1 id="CSS经典面试题"><a href="#CSS经典面试题" class="headerlink" title="CSS经典面试题"></a>CSS经典面试题</h1><p>收录一下面试可能涉及的知识点。</p>
+<ol>
+<li><p>W3C标准盒子模型：content-box</p>
+<p>宽度 = (content) + border + padding + margin</p>
+<p>IE传统盒子模型：border-box</p>
+</li>
+<li><p>CSS选择器</p>
+<p>id选择器（#）、类选择器（.）、标签选择器（div）、相邻选择器（+）、子选择器（&gt;）、后代选择器（ ）、通配符选择器（*）、属性选择器（a[rel=”external”]）、伪类选择器（:hover、:nth-child）</p>
+</li>
+<li><p>可继承的属性：font-size，font-family，color</p>
+<p>不可继承的属性：border，padding，margin，width，height</p>
+</li>
+<li><p>CSS优先级：</p>
+<p>!important &gt; 行内样式&gt; id &gt; 类 &gt; 标签 &gt; 通配符 &gt; 继承 &gt;浏览器默认属性</p>
+</li>
+<li><p>CSS3新增伪类：</p>
+<p>p:first-of-type 属于其父元素的首个元素</p>
+<p>p:last-of-type 属于其父元素的最后元素</p>
+<p>p:only-of-type 属于其父元素唯一的元素</p>
+<p>p:only-child 属于其父元素的唯一子元素</p>
+<p>p:nth-child(2) 属于其父元素的第二个子元素</p>
+<p>:enabled :disabled 表单控件的禁用状态</p>
+<p>:checked 单选框或复选框被选中</p>
+</li>
+<li><p>CSS实现垂直居中（水平居中的方法 <code>margin: 0 auto;</code>）</p>
+<p>（1）translate变换；（2）flex布局；（3）绝对定位与top/bottom/left/right: 0; ；（4）::before伪类</p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.box</span>&#123;
+    <span class="hljs-attribute">position</span>: relative;
+	<span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;
+	<span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">50%</span>);
+&#125;</code></pre>
 
+<pre><code class="hljs css"><span class="hljs-selector-class">.parent</span>&#123;
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">align-items</span>: center;
+&#125;</code></pre>
+
+<pre><code class="hljs css"><span class="hljs-selector-class">.box</span>&#123;
+	<span class="hljs-attribute">margin</span>: auto;
+	<span class="hljs-attribute">position</span>: absolute;
+	<span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<pre><code class="hljs css"><span class="hljs-selector-class">.parent</span><span class="hljs-selector-pseudo">::before</span>&#123;
+	<span class="hljs-attribute">display</span>: inline-block;
+	<span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;&quot;</span>;
+	<span class="hljs-attribute">vertical-align</span>: middle;
+	<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+&#125;</code></pre>
+</li>
+<li><p>display有哪些类型？</p>
+<p>inline - 内联； none - 隐藏； block - 块显示；table - 表格显示； list-item - 项目列表；inline-block - 内联块</p>
+</li>
+<li><p>position的值</p>
+<p>static（默认）- 按照正常文档流进行排列</p>
+<p>relative（相对定位）- 不脱离文档流，参考自身静态位置通过top等定位</p>
+<p>absolute（绝对定位）- 参考距其最近的一个不为static定位的父级元素通过top等定位</p>
+<p>fixed（固定定位）- 所固定的参照对象是可视窗口</p>
+</li>
+<li><p>CSS3新特性：</p>
+<p>RGBA和透明度（Alpha）；</p>
+<p>background-image，background-origin，background-size background-repeat；</p>
+<p>word-wrap（对不可分割的长单词换行），<code>word-wrap: break-word;</code>；</p>
+<p>文字阴影：<code>text-shadow: 5px 5px 5px #FF0000;</code>（水平阴影，垂直阴影，模糊距离，颜色）</p>
+<p>font-face：自定义字体；</p>
+<p>border-radius； </p>
+<p>边框图片：<code>border-image: url(src) 30 30 round;</code></p>
+<p>盒阴影：<code>box-shadow: 10px 10px 5px #FF0000;</code></p>
+<p>媒体查询：<code>@media screen and (max-width:xxxpx)&#123;&#125;</code></p>
+</li>
+<li><p>flex布局单独写一章博客</p>
+</li>
+<li><p>display属性规定元素应该生成的框的类型；position属性规定元素的定位类型；float属性是一种布局方式，定义元素在哪个方向浮动。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://neko-kyuu.github.io/2020/09/02/BFC/">BFC</a>（块级格式化上下文）规定了内部的块级盒子如何布局，适用场景：解决边距折叠；自适应双栏布局；解决高度塌缩。</p>
+</li>
+<li><p>CSS优化/提高性能的方法有哪些？</p>
+<p>避免过度约束；</p>
+<p>避免后代选择符；</p>
+<p>避免链式选择符；</p>
+<p>使用紧凑的语法；</p>
+<p>避免不必要的命名空间；</p>
+<p>避免不必要的重复；</p>
+<p>使用表示语义的名字；</p>
+<p>避免!important；</p>
+</li>
+<li><p>浏览器是怎样解析CSS选择器的？</p>
+<p>CSS选择器的解析是从右到左解析的，先找到所有最后节点，对于每一个节点，向上寻找其父节点，直到找到根元素或满足条件的匹配规则，则结束这个分支的遍历。</p>
+<p>在CSS解析完毕后，需要将解析的结果与DOM tree的内容一起进行分析，建立Render tree用来渲染。</p>
+</li>
+<li><p>margin和padding的适用场景：</p>
+<p>margin：在border外侧添加空白；空白处不需要背景色；上下相连的margin可相互折叠。</p>
+<p>padding：在border内侧添加空白；空白处需要背景色；padding不可折叠。</p>
+</li>
+<li><p>响应式设计是指一个网站能够兼容多个终端，基本原理是通过媒体查询检测不同的设备屏幕尺寸进行处理。</p>
+<p>页面头部必须有viewport声明。</p>
+</li>
+<li><p>CSS Sprites</p>
+<p>将一个页面涉及到的所有图片都包含到一张大图中，然后利用CSS的background-image，background-repeat，background-position的组合进行背景定位。利用CSS Sprites能够很好地减少网页的http请求，减少图片的字节，从而提高页面的性能。</p>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014697639/article/details/80311559">https://blog.csdn.net/u014697639/article/details/80311559</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CSS/">CSS</a>
+                    
+                  </div>
                 
               </div>
               
@@ -252,9 +346,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/14/CSS%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%881%EF%BC%89/">
+                      <a href="/2020/10/14/JS%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS经典面试题（1）</span>
+                        <span class="hidden-mobile">JS中创建对象的几种方式</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -262,8 +356,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/18/linux/">
-                        <span class="hidden-mobile">linux概述</span>
+                      <a href="/2020/10/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2readme/">
+                        <span class="hidden-mobile">个人博客readme</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -402,7 +496,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "个人博客readme&nbsp;",
+        "CSS经典面试题（1）&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

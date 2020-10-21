@@ -1,0 +1,794 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>webpack - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>迦巴勒幻想图书馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-10-21 20:32" pubdate>
+      2020年10月21日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      41
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">webpack</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><p>webpack是一个模块打包工具，可以使用它管理项目中的模块依赖，并编译输出模块所需的静态文件。它可以很好地管理、打包开发中所用到的HTML，CSS，JavaScript和静态文件（图片，字体）等，让开发更高效。对于不同类型的依赖，webpack有对应的模块加载器，而且会分析模块间的依赖关系，最后合并生成优化的静态资源。</p>
+<h2 id="与gulp，grunt的区别"><a href="#与gulp，grunt的区别" class="headerlink" title="与gulp，grunt的区别"></a>与gulp，grunt的区别</h2><p>区别：webpack支持代码分割，模块化（AMD，CommonJ，ES2015），全局分析</p>
+<h2 id="webpack的基本功能和工作原理"><a href="#webpack的基本功能和工作原理" class="headerlink" title="webpack的基本功能和工作原理"></a>webpack的基本功能和工作原理</h2><ul>
+<li>代码转换：TypeScript 编译成 JavaScript、SCSS 编译成 CSS 等等</li>
+<li>文件优化：压缩 JavaScript、CSS、HTML 代码，压缩合并图片等</li>
+<li>代码分割：提取多个页面的公共代码、提取首屏不需要执行部分的代码让其异步加载</li>
+<li>模块合并：在采用模块化的项目有很多模块和文件，需要构建功能把模块分类合并成一个文件</li>
+<li>自动刷新：监听本地源代码的变化，自动构建，刷新浏览器</li>
+<li>代码校验：在代码被提交到仓库前需要检测代码是否符合规范，以及单元测试是否通过</li>
+<li>自动发布：更新完代码后，自动构建出线上发布代码并传输给发布系统。</li>
+</ul>
+<h2 id="webpack-构建过程"><a href="#webpack-构建过程" class="headerlink" title="webpack 构建过程"></a>webpack 构建过程</h2><ul>
+<li><p>从entry里配置的module开始递归解析entry依赖的所有module</p>
+</li>
+<li><p>每找到一个module，就会根据配置的loader去找对应的转换规则</p>
+</li>
+<li><p>对module进行转换后，再解析出当前module依赖的module</p>
+</li>
+<li><p>这些模块会以entry为单位分组，一个entry和其所有依赖的module被分到一个组Chunk</p>
+</li>
+<li><p>最后webpack会把所有Chunk转换为文件输出</p>
+</li>
+<li><p>在整个流程中webpack会在恰当的时机执行plugin里定义的逻辑</p>
+</li>
+</ul>
+<p>简单总结：</p>
+<ul>
+<li>初始化：启动构建，读取与合并配置参数，加载 Plugin，实例化 Compiler</li>
+<li>编译：从 Entry 出发，针对每个 Module 串行调用对应的 Loader 去翻译文件的内容，再找到该 Module 依赖的 Module，递归地进行编译处理</li>
+<li>输出：将编译后的 Module 组合成 Chunk，将 Chunk 转换成文件，输出到文件系统中</li>
+</ul>
+<h2 id="webpack-打包原理"><a href="#webpack-打包原理" class="headerlink" title="webpack 打包原理"></a>webpack 打包原理</h2><p>将所有依赖打包成一个bundle.js，通过代码分割成单元片段按需加载。</p>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><h3 id="入口（entry）"><a href="#入口（entry）" class="headerlink" title="入口（entry）"></a>入口（entry）</h3><p>入口指示webpack以哪个文件为入口起点开始打包，分析构建内部依赖图。默认为./src/index.js</p>
+<h3 id="输出（output）"><a href="#输出（output）" class="headerlink" title="输出（output）"></a>输出（output）</h3><p>输出指示webpack打包后的资源bundles输出到哪里去，以及如何命名。默认为./dist</p>
+<h3 id="加载器（loader）"><a href="#加载器（loader）" class="headerlink" title="加载器（loader）"></a>加载器（loader）</h3><p>loader本质就是一个函数，让webpack能够去处理哪些非JS文件（<strong>webpack本身只理解JS</strong>）。</p>
+<p>在webpack.config.js中，loader在 module.rules 中配置，作为模块的解析规则，类型为<strong>数组</strong>。每一项都是一个 <strong>Object</strong>，内部包含了 test（类型文件）、loader、options （参数）等属性。</p>
+<h3 id="插件（plugin）"><a href="#插件（plugin）" class="headerlink" title="插件（plugin）"></a>插件（plugin）</h3><p>插件可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量等。</p>
+<p>在webpack.config.js中，插件在 plugins 中单独配置，类型为<strong>数组</strong>，每一项是一个 Plugin 的实例，参数都通过构造函数传入。插件需要引入才能使用：</p>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> HtmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;html-webpack-plugin&#x27;</span>)</code></pre>
+
+<h3 id="模式（mode）"><a href="#模式（mode）" class="headerlink" title="模式（mode）"></a>模式（mode）</h3><p>模式指示webpack使用相应模式的配置。</p>
+<p><img src="image-20201021212121711.png" srcset="/img/loading.gif"></p>
+<ol>
+<li>其他概念：bundle是webpack打包出来的文件。chunk是webpack在进行模块的依赖分析的时候，代码分割出来的代码块。module是开发中的单个模块。</li>
+</ol>
+<h2 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h2><p>webpack的配置文件，运行webpack指令时，会加载里面的配置。</p>
+<p>所有构建工具都是基于node.js平台运行的，模块化默认采用<strong>commonJS</strong>。</p>
+<pre><code class="hljs js"><span class="hljs-comment">// resolve用来拼接绝对路径</span>
+<span class="hljs-keyword">const</span> &#123; resolve &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>);
+
+<span class="hljs-built_in">module</span>.exports = &#123;
+	<span class="hljs-comment">//入口起点</span>
+	entry: <span class="hljs-string">&#x27;./src/index.js&#x27;</span>,
+	<span class="hljs-comment">//输出</span>
+	output: &#123;
+		<span class="hljs-comment">//输出文件名</span>
+		filename: <span class="hljs-string">&#x27;built.js&#x27;</span>,
+		<span class="hljs-comment">//输出路径，__dirname nodejs变量，代表当前文件的目录绝对路径</span>
+		path: resolve(__dirname, <span class="hljs-string">&#x27;build&#x27;</span>)
+	&#125;,
+	
+	<span class="hljs-comment">//loader配置</span>
+	<span class="hljs-built_in">module</span>: &#123;
+		rules:[
+			<span class="hljs-comment">//详细的loader配置</span>
+		]
+	&#125;,
+	
+	<span class="hljs-comment">//plugins的配置</span>
+	plugins: [
+		<span class="hljs-comment">//详细的plugin配置</span>
+	],
+	
+	<span class="hljs-comment">//模式（只能使用一个）</span>
+	mode: <span class="hljs-string">&#x27;development&#x27;</span>,
+	<span class="hljs-comment">// mode: &#x27;production&#x27;</span>
+&#125;</code></pre>
+
+<h2 id="webpack常见loader和plugin"><a href="#webpack常见loader和plugin" class="headerlink" title="webpack常见loader和plugin"></a>webpack常见loader和plugin</h2><h3 id="loader"><a href="#loader" class="headerlink" title="loader"></a><strong>loader</strong></h3><ul>
+<li><code>babel-loader</code>: 将ES6+转移成ES5-</li>
+<li><code>css-loader</code>，<code>style-loader</code>：解析css文件，能够解释@import url()等</li>
+<li><code>file-loader</code>：直接输出文件，把构建后的文件路径返回，可以处理很多类型的文件</li>
+<li><code>vue-loader</code>：加载 Vue.js 单文件组件</li>
+<li><code>html-loader</code>：负责引入html文件中的img图片，从而能被<code>url-loader</code>处理</li>
+<li><code>url-loader</code>：打包图片</li>
+</ul>
+<pre><code class="hljs js"><span class="hljs-comment">// url-loader增强版的file-loader，小于limit的转为Base64,大于limit的调用file-loader</span>
+npm install url-loader -D
+<span class="hljs-comment">// 使用</span>
+<span class="hljs-built_in">module</span>.exports = &#123;
+    <span class="hljs-built_in">module</span>: &#123;
+        rules: [&#123;
+            test: <span class="hljs-regexp">/\.(png|jpg|gif)$/</span>,
+            use: [&#123;
+                loader: <span class="hljs-string">&#x27;url-loader&#x27;</span>,
+                options: &#123;
+                    outputPath: <span class="hljs-string">&#x27;images/&#x27;</span>,
+                    limit: <span class="hljs-number">500</span> <span class="hljs-comment">//小于500B的文件打包出Base64格式，写入JS</span>
+                &#125;
+            &#125;]
+        &#125;]
+    &#125;
+&#125;</code></pre>
+
+<h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a><strong>plugins</strong></h3><ul>
+<li><code>html-webpack-plugin</code>: 压缩html</li>
+</ul>
+<pre><code class="hljs js"><span class="hljs-comment">//引入</span>
+<span class="hljs-keyword">const</span> HtmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;html-webpack-plugin&#x27;</span>)
+
+<span class="hljs-built_in">module</span>.exports = &#123;
+  <span class="hljs-comment">//...</span>
+  plugins: [
+    <span class="hljs-keyword">new</span> HtmlWebpackPlugin(&#123;
+      filename: <span class="hljs-string">&#x27;index.html&#x27;</span>, <span class="hljs-comment">// 配置输出文件名和路径</span>
+      template: <span class="hljs-string">&#x27;./public/index.html&#x27;</span>, <span class="hljs-comment">// 配置要被编译的html文件</span>
+      hash: <span class="hljs-literal">true</span>,
+      <span class="hljs-comment">// 压缩 =&gt; production 模式使用</span>
+      minify: &#123;
+        removeAttributeQuotes: <span class="hljs-literal">true</span>, <span class="hljs-comment">//删除双引号</span>
+        collapseWhitespace: <span class="hljs-literal">true</span> <span class="hljs-comment">//折叠 html 为一行</span>
+      &#125;
+    &#125;)
+  ]
+&#125;</code></pre>
+
+<ul>
+<li><code>clean-webpack-plugin</code>: 打包器清理源目录文件，在webpack打包器清理dist目录</li>
+</ul>
+<pre><code class="hljs js">npm install clean-webpack-plugin -D
+<span class="hljs-comment">// 修改webpack.config.js</span>
+<span class="hljs-keyword">const</span> cleanWebpackPlugin=<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;clean-webpack-plugin&#x27;</span>)
+<span class="hljs-built_in">module</span>.exports = &#123;
+    plugins: [<span class="hljs-keyword">new</span> cleanWebpackPlugin([<span class="hljs-string">&#x27;dist&#x27;</span>])]
+&#125;</code></pre>
+
+<h2 id="如何自动生成webpack配置？"><a href="#如何自动生成webpack配置？" class="headerlink" title="如何自动生成webpack配置？"></a>如何自动生成webpack配置？</h2><p>可以用一些官方脚手架</p>
+<ul>
+<li>webpack-cli</li>
+</ul>
+<pre><code class="hljs awk"><span class="hljs-regexp">//</span>安装
+npm i webpack webpack-cli -D</code></pre>
+
+<ul>
+<li>vue-cli</li>
+</ul>
+<pre><code class="hljs awk"><span class="hljs-regexp">//</span> 首先安装
+npm install -g @vue/cli
+<span class="hljs-regexp">//</span> 新建项目hello
+vue create hello
+复制代码</code></pre>
+
+<ul>
+<li>nuxt-cli</li>
+</ul>
+<pre><code class="hljs dsconfig">// 确保安装了<span class="hljs-string">npx,</span><span class="hljs-string">npx在</span><span class="hljs-string">npm5.</span>2.0默认安装了
+// 新建项目<span class="hljs-string">hello</span>
+<span class="hljs-string">npx </span><span class="hljs-built_in">create-nuxt-app</span> <span class="hljs-string">hello</span></code></pre>
+
+<h2 id="webpack如何配置单页面和多页面的应用程序？"><a href="#webpack如何配置单页面和多页面的应用程序？" class="headerlink" title="webpack如何配置单页面和多页面的应用程序？"></a>webpack如何配置单页面和多页面的应用程序？</h2><ul>
+<li>单个页面</li>
+</ul>
+<pre><code class="hljs js"><span class="hljs-built_in">module</span>.exports = &#123;
+    entry: <span class="hljs-string">&#x27;./path/to/my/entry/file.js&#x27;</span>
+&#125;</code></pre>
+
+<ul>
+<li>多页面应用程序</li>
+</ul>
+<pre><code class="hljs js"><span class="hljs-built_in">module</span>.entrys = &#123;
+    entry: &#123;
+        pageOne: <span class="hljs-string">&#x27;./src/pageOne/index.js&#x27;</span>,
+        pageTwo: <span class="hljs-string">&#x27;./src/pageTwo/index.js&#x27;</span>
+    &#125;
+&#125;</code></pre>
+
+<h2 id="文件监听原理"><a href="#文件监听原理" class="headerlink" title="文件监听原理"></a><strong>文件监听原理</strong></h2><p>在发现源码发生变化时，自动重新构建出新的输出文件。</p>
+<p>Webpack开启监听模式，有两种方式：</p>
+<ul>
+<li>启动 webpack 命令时，带上 –watch 参数</li>
+<li>在配置 webpack.config.js 中设置 watch:true</li>
+</ul>
+<p>缺点：每次需要手动刷新浏览器</p>
+<p>原理：轮询判断文件的最后编辑时间是否变化，如果某个文件发生了变化，并不会立刻告诉监听者，而是先缓存起来，等 <code>aggregateTimeout</code> 后再执行。</p>
+<pre><code class="hljs js"><span class="hljs-built_in">module</span>.export = &#123;
+    <span class="hljs-comment">// 默认false,也就是不开启</span>
+    watch: <span class="hljs-literal">true</span>,
+    <span class="hljs-comment">// 只有开启监听模式时，watchOptions才有意义</span>
+    watchOptions: &#123;
+        <span class="hljs-comment">// 默认为空，不监听的文件或者文件夹，支持正则匹配</span>
+        ignored: <span class="hljs-regexp">/node_modules/</span>,
+        <span class="hljs-comment">// 监听到变化发生后会等300ms再去执行，默认300ms</span>
+        aggregateTimeout:<span class="hljs-number">300</span>,
+        <span class="hljs-comment">// 判断文件是否发生变化是通过不停询问系统指定文件有没有变化实现的，默认每秒问1000次</span>
+        poll:<span class="hljs-number">1000</span>
+    &#125;
+&#125;</code></pre>
+
+<h2 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h2><p>webpack-dev-server使用<strong>内存</strong>来存储webpack开发环境下的打包文件（<strong>不会有本地输出</strong>），并且可以使用模块热更新，相比传统http服务器开发更加简单高效。</p>
+<p>dev-server配置：</p>
+<pre><code class="hljs properties"><span class="hljs-meta">module.exports</span> = <span class="hljs-string">&#123;</span>
+	<span class="hljs-attr">entry</span>:<span class="hljs-string">...,</span>
+	<span class="hljs-attr">output</span>:<span class="hljs-string">&#123;...</span>
+	<span class="hljs-attr">&#125;,</span>
+	<span class="hljs-attr">module</span>:<span class="hljs-string">&#123;...</span>
+	<span class="hljs-attr">&#125;,</span>
+	<span class="hljs-attr">plugin</span>:<span class="hljs-string">[...</span>
+	<span class="hljs-attr">],</span>
+	<span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;...&#x27;,</span>
+	
+	<span class="hljs-attr">devServer</span>:<span class="hljs-string">&#123;</span>
+		<span class="hljs-attr">contentBase</span>: <span class="hljs-string">resolve(__dirname,&#x27;build&#x27;),</span>
+		<span class="hljs-attr">compress</span>: <span class="hljs-string">true,</span>
+		<span class="hljs-attr">port</span>: <span class="hljs-string">8080</span>
+	<span class="hljs-attr">&#125;</span>
+<span class="hljs-attr">&#125;</span></code></pre>
+
+<p>启动dev server的指令：<code>npx webpack-dev-server</code></p>
+<h3 id="什么是模块热更新？"><a href="#什么是模块热更新？" class="headerlink" title="什么是模块热更新？"></a>什么是模块热更新？</h3><p>webpack的一个功能，可以使代码修改后不用刷新浏览器就自动更新，高级版的自动刷新浏览器。</p>
+<p>热更新又称热替换（<code>Hot Module Replacement</code>），缩写为 <code>HMR</code>。</p>
+<p>HMR的核心就是客户端从服务端拉去更新后的文件，准确的说是 chunk diff (chunk 需要更新的部分)，实际上 WDS 与浏览器之间维护了一个 <code>Websocket</code>，当本地资源发生变化时，WDS 会向浏览器推送更新，并带上构建时的 hash，让客户端与上一次资源进行对比。客户端对比出差异后会向 WDS 发起 <code>Ajax</code> 请求来获取更改内容(文件列表、hash)，这样客户端就可以再借助这些信息继续向 WDS 发起 <code>jsonp</code> 请求获取该chunk的增量更新。</p>
+<p>后续的部分(拿到增量更新之后如何处理？哪些状态该保留？哪些又需要更新？)由 <code>HotModulePlugin</code> 来完成，提供了相关 API 以供开发者针对自身场景进行处理，像<code>react-hot-loader</code> 和 <code>vue-loader</code> 都是借助这些 API 实现 HMR。</p>
+<h3 id="dev-server是怎么跑起来的"><a href="#dev-server是怎么跑起来的" class="headerlink" title="dev-server是怎么跑起来的"></a>dev-server是怎么跑起来的</h3><p>webpack-dev-server支持两种模式来自动刷新页面</p>
+<ul>
+<li>iframe模式（页面放在iframe中，当发送改变时重载） 无需额外配置，只要以这种格式url访问即可。<code>http://localhost:8080/webpack-dev-server/index.html</code></li>
+<li>inline模式（将webpack-dev-server的客户端入口添加到bundle中） inline模式下url不用发生变化，但启动inline模式分两种情况</li>
+</ul>
+<pre><code class="hljs html">// 以命令行启动webpack-dev-server有两种方式
+// 方式1 在命令行中添加--inline命令
+// 方式2 在webpack-config.js添加devServer:&#123;inline: true&#125;
+// 以node.js API启动有两种方式
+// 方式1 添加webpack-dev-server/client?http://localhost:8080/到webpack配置的entry入口点
+config.entry.app.unshift(&quot;webpack-dev-server/client?http://localhost:8080/&quot;);
+// 将<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://localhost:8080/webpack-dev-server.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>添加到html文件中</code></pre>
+
+<h2 id="如何优化-Webpack-的构建速度？"><a href="#如何优化-Webpack-的构建速度？" class="headerlink" title="如何优化 Webpack 的构建速度？"></a><strong>如何优化 Webpack 的构建速度？</strong></h2><ul>
+<li>使用<code>高版本</code>的 Webpack 和 Node.js</li>
+<li><code>多进程/多实例构建</code>：HappyPack(不维护了)、thread-loader</li>
+<li><code>压缩代码</code><ul>
+<li>多进程并行压缩<ul>
+<li>webpack-paralle-uglify-plugin</li>
+<li>uglifyjs-webpack-plugin 开启 parallel 参数 (不支持ES6)</li>
+<li>terser-webpack-plugin 开启 parallel 参数</li>
+</ul>
+</li>
+<li>通过 mini-css-extract-plugin 提取 Chunk 中的 CSS 代码到单独文件，通过 css-loader 的 minimize 选项开启 cssnano 压缩 CSS。</li>
+</ul>
+</li>
+<li><code>图片压缩</code><ul>
+<li>使用基于 Node 库的 imagemin (很多定制选项、可以处理多种图片格式)</li>
+<li>配置 image-webpack-loader</li>
+</ul>
+</li>
+<li><code>缩小打包作用域</code>：<ul>
+<li>exclude/include (确定 loader 规则范围)</li>
+<li>resolve.modules 指明第三方模块的绝对路径 (减少不必要的查找)</li>
+<li>resolve.mainFields 只采用 main 字段作为入口文件描述字段 (减少搜索步骤，需要考虑到所有运行时依赖的第三方模块的入口文件描述字段)</li>
+<li>resolve.extensions 尽可能减少后缀尝试的可能性</li>
+<li>noParse 对完全不需要解析的库进行忽略 (不去解析但仍会打包到 bundle 中，注意被忽略掉的文件里不应该包含 import、require、define 等模块化语句)</li>
+<li>IgnorePlugin (完全排除模块)</li>
+<li>合理使用alias</li>
+</ul>
+</li>
+<li><code>提取页面公共资源</code>：<ul>
+<li>基础包分离：<ul>
+<li>使用 html-webpack-externals-plugin，将基础包通过 CDN 引入，不打入 bundle 中</li>
+<li>使用 SplitChunksPlugin 进行(公共脚本、基础包、页面公共文件)分离(Webpack4内置) ，替代了 CommonsChunkPlugin 插件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>DLL</code>：<ul>
+<li>使用 DllPlugin 进行分包，使用 DllReferencePlugin(索引链接) 对 manifest.json 引用，让一些基本不会改动的代码先打包成静态资源，避免反复编译浪费时间。</li>
+<li>HashedModuleIdsPlugin 可以解决模块数字id问题</li>
+</ul>
+</li>
+<li><code>充分利用缓存提升二次构建速度</code>：<ul>
+<li>babel-loader 开启缓存</li>
+<li>terser-webpack-plugin 开启缓存</li>
+<li>使用 cache-loader 或者 hard-source-webpack-plugin</li>
+</ul>
+</li>
+<li><code>Tree shaking</code><ul>
+<li>打包过程中检测工程中没有引用过的模块并进行标记，在资源压缩时将它们从最终的bundle中去掉(只能对ES6 Modlue生效) 开发中尽可能使用ES6 Module的模块，提高tree shaking效率</li>
+<li>禁用 babel-loader 的模块依赖解析，否则 Webpack 接收到的就都是转换过的 CommonJS 形式的模块，无法进行 tree-shaking</li>
+<li>使用 PurifyCSS(不在维护) 或者 uncss 去除无用 CSS 代码<ul>
+<li>purgecss-webpack-plugin 和 mini-css-extract-plugin配合使用(建议)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Scope hoisting</code><ul>
+<li>构建后的代码会存在大量闭包，造成体积增大，运行代码时创建的函数作用域变多，内存开销变大。Scope hoisting 将所有模块的代码按照引用顺序放在一个函数作用域里，然后适当的重命名一些变量以防止变量名冲突</li>
+<li>必须是ES6的语法，因为有很多第三方库仍采用 CommonJS 语法，为了充分发挥 Scope hoisting 的作用，需要配置 mainFields 对第三方模块优先采用 jsnext:main 中指向的ES6模块化语法</li>
+</ul>
+</li>
+<li><code>动态Polyfill</code><ul>
+<li>建议采用 polyfill-service 只给用户返回需要的polyfill，社区维护。 (部分国内奇葩浏览器UA可能无法识别，但可以降级返回所需全部polyfill)</li>
+</ul>
+</li>
+</ul>
+<p>更多优化请参考<a target="_blank" rel="noopener" href="https://www.webpackjs.com/guides/build-performance/">官网-构建性能</a></p>
+<h2 id="如何利用webpack优化前端性能？"><a href="#如何利用webpack优化前端性能？" class="headerlink" title="如何利用webpack优化前端性能？"></a>如何利用webpack优化前端性能？</h2><ul>
+<li>压缩代码。删除多余的代码、注释、简化代码的写法等。</li>
+<li>利用CDN加速。在构建过程中，将引用的静态资源路径修改为CDN上对应的路径。</li>
+<li>删除死代码即不会运行的片段（<code>Tree Shaking</code>）。</li>
+<li>优化图片，对于小图可以使用<code>base64</code>的方式写入文件中</li>
+<li>按照路由拆分代码，实现按需加载，提取公共代码</li>
+<li>给打包出来的文件名添加哈希，实现浏览器缓存文件</li>
+</ul>
+<h2 id="文件指纹"><a href="#文件指纹" class="headerlink" title="文件指纹"></a>文件指纹</h2><p>文件指纹是打包后输出的文件名的后缀。</p>
+<ul>
+<li><code>Hash</code>：和整个项目的构建相关，只要项目文件有修改，整个项目构建的 hash 值就会更改</li>
+<li><code>Chunkhash</code>：和 Webpack 打包的 chunk 有关，不同的 entry 会生出不同的 chunkhash</li>
+<li><code>Contenthash</code>：根据文件内容来定义 hash，文件内容不变，则 contenthash 不变</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903781847695367">https://juejin.im/post/6844903781847695367</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://juejin.im/post/6844904094281236487">https://juejin.im/post/6844904094281236487</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018704305">https://segmentfault.com/a/1190000018704305</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/webpack/">webpack</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/10/21/%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BAbase64%E6%A0%BC%E5%BC%8F%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">图片转换为base64格式的优缺点</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/21/%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/">
+                        <span class="hidden-mobile">节流与防抖</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 6,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "webpack&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

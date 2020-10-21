@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 - Hexo</title>
+  <title>Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -150,6 +150,10 @@
           </div>
 
           
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
         </div>
       </div>
     </div>
@@ -159,85 +163,117 @@
     
       <div class="container nopadding-md">
         <div class="py-5" id="board"
-          >
+          style=margin-top:0>
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 22 篇文章</p>
-  <hr>
-  
+
+  <div class="row mx-auto index-card">
     
-      
-      <p class="h5">2020</p>
     
-    <a href="/2020/09/18/linux/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">linux概述</span>
-      <time style="float: right;">09-18</time>
-    </a>
-  
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/01/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE%E8%AF%A6%E8%A7%A3/">作用域链详解</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/01/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE%E8%AF%A6%E8%A7%A3/">
+          
+          
+            
+          
+          执行环境及作用域​    引用一下JS高级程序设计书里的几个概念：
+
+执行环境定义了变量或函数有权访问的其他数据，决定了它们各自的行为。
+
+
+每个执行环境都有一个与之关联的变量对象，环境中定义的所有变量和函数都保存在这个变量中。
+
+
+每个函数都有自己的执行环境，当执行流进入一个函数时，函数的环境就会被推入一个环境栈中。而在函数执行后，栈将其环境弹出，把控制权返回给之前的执行环境。
+
+
+当代码在环境
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-01 19:23" pubdate>
+              2020-09-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/JS/">JS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/js/">js</a>
+            
+              <a href="/tags/%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83/">执行环境</a>
+            
+              <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域链</a>
+            
+              <a href="/tags/%E9%97%AD%E5%8C%85/">闭包</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
     
-    <a href="/2020/09/16/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">linux常用指令</span>
-      <time style="float: right;">09-16</time>
-    </a>
-  
     
-    <a href="/2020/09/07/vuex/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">vuex</span>
-      <time style="float: right;">09-07</time>
-    </a>
-  
-    
-    <a href="/2020/09/04/SASS-SCSS-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SASS(SCSS)基本语法</span>
-      <time style="float: right;">09-04</time>
-    </a>
-  
-    
-    <a href="/2020/09/04/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E7%9A%84%E5%AE%9E%E7%8E%B0/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">常见布局的实现（1）</span>
-      <time style="float: right;">09-04</time>
-    </a>
-  
-    
-    <a href="/2020/09/03/AMD%E5%92%8CCMD%E7%9A%84%E5%8C%BA%E5%88%AB/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">前端模块化（AMD/CMD)</span>
-      <time style="float: right;">09-03</time>
-    </a>
-  
-    
-    <a href="/2020/09/02/BFC/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">BFC</span>
-      <time style="float: right;">09-02</time>
-    </a>
-  
-    
-    <a href="/2020/09/02/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">前端常见的兼容性解决方案</span>
-      <time style="float: right;">09-02</time>
-    </a>
-  
-    
-    <a href="/2020/09/02/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%8Epromise/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">回调函数与promise</span>
-      <time style="float: right;">09-02</time>
-    </a>
-  
-    
-    <a href="/2020/09/01/this-%E5%85%B3%E9%94%AE%E8%AF%8D/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">this 关键词</span>
-      <time style="float: right;">09-01</time>
-    </a>
-  
-</div>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/31/hello-world/">Hello World</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/31/hello-world/">
+          
+          
+            
+          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-31 19:46" pubdate>
+              2020-08-31
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/09/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/09/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
     </span>
   </nav>
   
@@ -338,7 +374,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "摸鱼笔记&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

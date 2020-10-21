@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>个人博客readme - Hexo</title>
+  <title>原型及原型链 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -160,8 +160,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-10-13 16:55" pubdate>
-      2020年10月13日 下午
+    <time datetime="2020-10-14 21:08" pubdate>
+      2020年10月14日 晚上
     </time>
   </div>
 
@@ -171,7 +171,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      233 字
+      672 字
     </span>
   
 
@@ -181,7 +181,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      7
        分钟
     </span>
   
@@ -211,37 +211,56 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">个人博客readme</h1>
+            <h1 style="display: none">原型及原型链</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="博客展示"><a href="#博客展示" class="headerlink" title="博客展示"></a>博客展示</h2><h3 id="登录-注册"><a href="#登录-注册" class="headerlink" title="登录/注册"></a>登录/注册</h3><p><img src="Snipaste_2020-10-13_14-22-59.png" srcset="/img/loading.gif" alt="image"></p>
-<p><img src="Snipaste_2020-10-13_14-34-55.png" srcset="/img/loading.gif" alt="image"></p>
-<p>包含表单验证功能</p>
-<p><img src="Snipaste_2020-10-13_14-36-27.png" srcset="/img/loading.gif" alt="image"></p>
-<p>这里登录验证我将用户名保存在了sessionStorage里。</p>
-<blockquote>
-<p>试用登录名neko 密码123456</p>
-</blockquote>
-<h3 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h3><p><img src="Snipaste_2020-10-13_15-55-18.png" srcset="/img/loading.gif" alt="image"></p>
-<p>首页布局为顶部-侧边布局。顶部区包括菜单栏和装饰图，鼠标悬浮在头像logo处可以登出。侧边栏包括音乐盒、日历及归档。</p>
-<p><img src="Snipaste_2020-10-13_15-55-52.png" srcset="/img/loading.gif" alt="image"></p>
-<p>正在播放的音乐底色会标橙，并且曲名会滚动显示。音乐的播放/暂停及音量控制为HTML5 audio自带的control属性。</p>
-<p><img src="Snipaste_2020-10-13_15-56-40.png" srcset="/img/loading.gif" alt="image"></p>
-<p>今日日期会显示黄色底色，点击本月的任意日期会弹出可以拖动的todo list窗口。</p>
-<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><p><img src="Snipaste_2020-10-13_16-01-19.png" srcset="/img/loading.gif" alt="image"></p>
-<p>日志页包含tabs选项卡功能。</p>
-<h3 id="归档"><a href="#归档" class="headerlink" title="归档"></a>归档</h3><p><img src="Snipaste_2020-10-13_16-15-05.png" srcset="/img/loading.gif" alt="image"></p>
-<p>归档页包含搜索功能，并且能够将搜索结果高亮特别显示。</p>
-<h3 id="画廊"><a href="#画廊" class="headerlink" title="画廊"></a>画廊</h3><p><img src="Snipaste_2020-10-13_16-16-45.png" srcset="/img/loading.gif" alt="image"></p>
-<p><img src="Snipaste_2020-10-13_16-17-15.png" srcset="/img/loading.gif" alt="image"></p>
-<p>瀑布流布局，图片支持懒加载。</p>
-<h3 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h3><p>右侧边栏包含<code>︿</code>置顶功能。</p>
+              <h1 id="原型及原型链"><a href="#原型及原型链" class="headerlink" title="原型及原型链"></a>原型及原型链</h1><h2 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h2><h3 id="理解原型对象"><a href="#理解原型对象" class="headerlink" title="理解原型对象"></a>理解原型对象</h3><p>只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor（构造函数）属性，这个属性是一个指向prototype属性所在函数的指针。以<a target="_blank" rel="noopener" href="https://neko-kyuu.github.io/2020/10/14/JS%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F">前例</a>来说，<code>Person.prototype.constructor</code>指向<code>Person</code>。通过这个构造函数，可以继续为原型对象添加其他属性和方法。</p>
+<p>创建了自定义构造函数后，其原型对象默认只会取得constructor属性；其他方法则都是从Object继承而来的。当调用构造函数创建一个新实例后，该实例的内部将包含一个指针（内部属性<code>[[Prototype]]</code>），指向构造函数的<strong>原型对象</strong>（即实例与构造函数没有直接的关系）。</p>
+<p><strong><code>prototype</code>与<code>__proto__</code></strong></p>
+<ol>
+<li>只有函数才有<code>prototype</code>，实例只有<code>__proto__</code></li>
+<li>函数是Function的实例，函数的prototype是Object的实例。</li>
+<li><code>Function.__proto__ == Function.prototype</code></li>
+<li><code>Object.prototype.__proto__ == null</code></li>
+</ol>
+<p><img src="v2-5fd1dbe971bf8e1f84afe2c689aa29f5_r.jpg" srcset="/img/loading.gif"></p>
+<h3 id="原型的动态性"><a href="#原型的动态性" class="headerlink" title="原型的动态性"></a>原型的动态性</h3><p>对原型对象所做的任何修改都能立即从实例上反应出来，即使是先创建了实例后修改原型也是如此。</p>
+<p>但如果重写整个原型对象（如重写<code>Person.prototype</code>），构造函数会指向新的原型对象，而实例仍然指向原来的实例对象。</p>
+<div class="note note-warning">
+            <p>实例中的指针仅指向原型，而不指向构造函数。</p>
+          </div>
+
+<h3 id="原型对象的问题"><a href="#原型对象的问题" class="headerlink" title="原型对象的问题"></a>原型对象的问题</h3><p>原型的共享性对于函数来说非常合适，但对于引用类型值的属性来说，问题就比较突出了。实例一般都是要有属于自己的属性的，因此原型模式很少单独使用。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>ECMAScript只支持实现继承，主要依靠原型链实现。</p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>原型链的基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。</p>
+<div class="note note-info">
+            <p>简单回顾一下构造函数、原型和实例的关系：每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。</p>
+          </div>
+
+<p>假如让原型对象等于另一个类型的实例，此时的原型对象将包含一个指向另一个原型的指针，相应地，另一个原型中也包含着一个指向另一个构造函数的指针。</p>
+<p>实现原型链有一种基本模式，代码如下：</p>
+<pre><code class="hljs js">SubType.prototype = <span class="hljs-keyword">new</span> SuperType();</code></pre>
+
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JS/">JS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/prototype-%E5%8E%9F%E5%9E%8B%E9%93%BE/">prototype, 原型链</a>
+                    
+                  </div>
                 
               </div>
               
@@ -252,9 +271,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/14/CSS%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%881%EF%BC%89/">
+                      <a href="/2020/10/21/%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS经典面试题（1）</span>
+                        <span class="hidden-mobile">节流与防抖</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -262,8 +281,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/18/linux/">
-                        <span class="hidden-mobile">linux概述</span>
+                      <a href="/2020/10/14/JS%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+                        <span class="hidden-mobile">JS中创建对象的几种方式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -402,7 +421,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "个人博客readme&nbsp;",
+        "原型及原型链&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

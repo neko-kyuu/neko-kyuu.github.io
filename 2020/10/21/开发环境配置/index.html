@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>个人博客readme - Hexo</title>
+  <title>开发环境配置 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -160,8 +160,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-10-13 16:55" pubdate>
-      2020年10月13日 下午
+    <time datetime="2020-10-21 23:33" pubdate>
+      2020年10月21日 晚上
     </time>
   </div>
 
@@ -171,7 +171,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      233 字
+      204 字
     </span>
   
 
@@ -181,7 +181,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      3
        分钟
     </span>
   
@@ -211,37 +211,83 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">个人博客readme</h1>
+            <h1 style="display: none">开发环境配置</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="博客展示"><a href="#博客展示" class="headerlink" title="博客展示"></a>博客展示</h2><h3 id="登录-注册"><a href="#登录-注册" class="headerlink" title="登录/注册"></a>登录/注册</h3><p><img src="Snipaste_2020-10-13_14-22-59.png" srcset="/img/loading.gif" alt="image"></p>
-<p><img src="Snipaste_2020-10-13_14-34-55.png" srcset="/img/loading.gif" alt="image"></p>
-<p>包含表单验证功能</p>
-<p><img src="Snipaste_2020-10-13_14-36-27.png" srcset="/img/loading.gif" alt="image"></p>
-<p>这里登录验证我将用户名保存在了sessionStorage里。</p>
-<blockquote>
-<p>试用登录名neko 密码123456</p>
-</blockquote>
-<h3 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h3><p><img src="Snipaste_2020-10-13_15-55-18.png" srcset="/img/loading.gif" alt="image"></p>
-<p>首页布局为顶部-侧边布局。顶部区包括菜单栏和装饰图，鼠标悬浮在头像logo处可以登出。侧边栏包括音乐盒、日历及归档。</p>
-<p><img src="Snipaste_2020-10-13_15-55-52.png" srcset="/img/loading.gif" alt="image"></p>
-<p>正在播放的音乐底色会标橙，并且曲名会滚动显示。音乐的播放/暂停及音量控制为HTML5 audio自带的control属性。</p>
-<p><img src="Snipaste_2020-10-13_15-56-40.png" srcset="/img/loading.gif" alt="image"></p>
-<p>今日日期会显示黄色底色，点击本月的任意日期会弹出可以拖动的todo list窗口。</p>
-<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><p><img src="Snipaste_2020-10-13_16-01-19.png" srcset="/img/loading.gif" alt="image"></p>
-<p>日志页包含tabs选项卡功能。</p>
-<h3 id="归档"><a href="#归档" class="headerlink" title="归档"></a>归档</h3><p><img src="Snipaste_2020-10-13_16-15-05.png" srcset="/img/loading.gif" alt="image"></p>
-<p>归档页包含搜索功能，并且能够将搜索结果高亮特别显示。</p>
-<h3 id="画廊"><a href="#画廊" class="headerlink" title="画廊"></a>画廊</h3><p><img src="Snipaste_2020-10-13_16-16-45.png" srcset="/img/loading.gif" alt="image"></p>
-<p><img src="Snipaste_2020-10-13_16-17-15.png" srcset="/img/loading.gif" alt="image"></p>
-<p>瀑布流布局，图片支持懒加载。</p>
-<h3 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h3><p>右侧边栏包含<code>︿</code>置顶功能。</p>
+              <h1 id="开发环境配置"><a href="#开发环境配置" class="headerlink" title="开发环境配置"></a>开发环境配置</h1><p>对webpack的总结，webpack.config.js配置如下：</p>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; resolve &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)
+<span class="hljs-keyword">const</span> HtmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;html-webpack-plugin&#x27;</span>)
+<span class="hljs-comment">//向外暴露一个对象</span>
+<span class="hljs-built_in">module</span>.exports = &#123;
+    entry: <span class="hljs-string">&#x27;.src/index.js&#x27;</span>,
+    output:&#123;
+        filename: <span class="hljs-string">&#x27;js/built.js&#x27;</span>,
+        path: resolve(__dirname, <span class="hljs-string">&#x27;build&#x27;</span>)
+    &#125;,
+    <span class="hljs-built_in">module</span>:&#123;
+        rules:[
+            &#123;<span class="hljs-comment">//less，样式文件会输出到js文件中</span>
+                test:<span class="hljs-regexp">/\.less$/</span>,
+                use:[<span class="hljs-string">&#x27;style-loader&#x27;</span>,<span class="hljs-string">&#x27;css-loader&#x27;</span>,<span class="hljs-string">&#x27;less-loader&#x27;</span>],
+            &#125;,
+            &#123;<span class="hljs-comment">//图片</span>
+                test:<span class="hljs-regexp">/\.(jpg|png|gif)$/</span>,
+                loader:<span class="hljs-string">&#x27;url-loader&#x27;</span>,
+                options:&#123;
+                    limit:<span class="hljs-number">8</span>*<span class="hljs-number">1024</span>,
+                    name:<span class="hljs-string">&#x27;[hash:10].[ext]&#x27;</span>,
+                    esModule: <span class="hljs-literal">false</span>,
+                    outputPath:<span class="hljs-string">&#x27;imgs&#x27;</span>
+                &#125;
+            &#125;,
+            &#123;<span class="hljs-comment">//html</span>
+                test:<span class="hljs-regexp">/\.html$/</span>,
+                loader:<span class="hljs-string">&#x27;html-loader&#x27;</span>
+            &#125;,
+            &#123;<span class="hljs-comment">//其他资源</span>
+                exclude: <span class="hljs-regexp">/\.(html|js|css|less|jpg|png|gif)$/</span>,
+                loader:<span class="hljs-string">&#x27;file-loader&#x27;</span>,
+                option:&#123;
+                    name:<span class="hljs-string">&#x27;[hash:10].[ext]&#x27;</span>,
+                    outputPath:<span class="hljs-string">&#x27;media&#x27;</span>
+                &#125;
+            &#125;
+        ]
+    &#125;,
+    plugin:[
+        <span class="hljs-keyword">new</span> HtmlWebpackPlugin(&#123;
+            template:<span class="hljs-string">&#x27;./src/index.html&#x27;</span>
+        &#125;)
+    ],
+    mode:<span class="hljs-string">&#x27;development&#x27;</span>,
+    devServer:&#123;
+        ContentBase:resolve(__dirname,<span class="hljs-string">&#x27;build&#x27;</span>),
+        compress:<span class="hljs-literal">true</span>,
+        open:<span class="hljs-literal">true</span>,
+        port:<span class="hljs-number">8080</span>
+    &#125;
+&#125;</code></pre>
+
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/webpack/">webpack</a>
+                    
+                  </div>
                 
               </div>
               
@@ -252,9 +298,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/14/CSS%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%881%EF%BC%89/">
+                      <a href="/2020/10/22/webpack%EF%BC%882%EF%BC%89/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS经典面试题（1）</span>
+                        <span class="hidden-mobile">webpack（2）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -262,8 +308,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/18/linux/">
-                        <span class="hidden-mobile">linux概述</span>
+                      <a href="/2020/10/21/Nodejs/">
+                        <span class="hidden-mobile">Nodejs</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -402,7 +448,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "个人博客readme&nbsp;",
+        "开发环境配置&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
