@@ -176,27 +176,25 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/09/01/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE%E8%AF%A6%E8%A7%A3/">作用域链详解</a>
+        <a href="/2020/10/14/JS%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">JS中创建对象的几种方式</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/01/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE%E8%AF%A6%E8%A7%A3/">
+        <a href="/2020/10/14/JS%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">
           
           
             
           
-          执行环境及作用域​    引用一下JS高级程序设计书里的几个概念：
+          JS中创建对象的几种方式Object 构造函数或对象字面量var person = new Object(); // new + 构造函数
 
-执行环境定义了变量或函数有权访问的其他数据，决定了它们各自的行为。
+var person = &#123;
+	name: &#x27;name&#x27;,
+	age: 21,
+	say: function()&#123; ... ;&#125;
+&#125;;
 
-
-每个执行环境都有一个与之关联的变量对象，环境中定义的所有变量和函数都保存在这个变量中。
-
-
-每个函数都有自己的执行环境，当执行流进入一个函数时，函数的环境就会被推入一个环境栈中。而在函数执行后，栈将其环境弹出，把控制权返回给之前的执行环境。
-
-
-当代码在环境
+缺点：使用同一个接口创建很多对象，会产生大量的重复代码。
+工
         </a>
       </p>
 
@@ -204,8 +202,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-01 19:23" pubdate>
-              2020-09-01
+            <time datetime="2020-10-14 19:05" pubdate>
+              2020-10-14
             </time>
           </div>
         
@@ -221,13 +219,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/js/">js</a>
+              <a href="/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">工厂模式</a>
             
-              <a href="/tags/%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83/">执行环境</a>
+              <a href="/tags/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%A8%A1%E5%BC%8F/">构造函数模式</a>
             
-              <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域链</a>
-            
-              <a href="/tags/%E9%97%AD%E5%8C%85/">闭包</a>
+              <a href="/tags/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%EF%BC%8C%E6%B7%B7%E5%90%88%E6%A8%A1%E5%BC%8F/">原型模式，混合模式</a>
             
           </div>
         
@@ -240,17 +236,23 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/08/31/hello-world/">Hello World</a>
+        <a href="/2020/10/14/CSS%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%881%EF%BC%89/">CSS经典面试题（1）</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/08/31/hello-world/">
+        <a href="/2020/10/14/CSS%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%881%EF%BC%89/">
           
           
             
           
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
+          CSS经典面试题收录一下面试可能涉及的知识点。
+
+W3C标准盒子模型：content-box
+宽度 = (content) + border + padding + margin
+IE传统盒子模型：border-box
+
+CSS选择器
+id选择器（#）、类选择器（.）、标签选择器（div）、相邻选择器（+）、子选择器（&gt;）、后代选择器（ ）、通配符选择器（*）、属性选择器（a[rel=”ex
         </a>
       </p>
 
@@ -258,8 +260,68 @@ Quick
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-31 19:46" pubdate>
-              2020-08-31
+            <time datetime="2020-10-14 16:56" pubdate>
+              2020-10-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CSS/">CSS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2readme/">个人博客readme</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2readme/">
+          
+          
+            
+          
+          博客展示登录/注册
+
+包含表单验证功能
+
+这里登录验证我将用户名保存在了sessionStorage里。
+
+试用登录名neko 密码123456
+
+首页
+首页布局为顶部-侧边布局。顶部区包括菜单栏和装饰图，鼠标悬浮在头像logo处可以登出。侧边栏包括音乐盒、日历及归档。
+
+正在播放的音乐底色会标橙，并且曲名会滚动显示。音乐的播放/暂停及音量控制为HTML5 audio自带的control属性。
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-13 16:55" pubdate>
+              2020-10-13
             </time>
           </div>
         
@@ -269,11 +331,426 @@ Quick
     </article>
   </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/18/linux/">linux概述</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/18/linux/">
+          
+          
+            
+          
+          linux概述Linux的基本组件就像任何其他典型的操作系统一样，Linux拥有所有这些组件：内核，shell和GUI，系统实用程序和应用程序。Linux比其他操作系统更具优势的是每个方面都附带其他功能，所有代码都可以免费下载。
+linux内核Linux 系统的核心是内核。内核控制着计算机系统上的所有硬件和软件，在必要时分配硬件，并根据需要执行软件。
+
+系统内存管理
+应用程序管理
+硬件设备管理
+文
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-18 20:37" pubdate>
+              2020-09-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/linux/">linux</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/16/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">linux常用指令</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/16/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+          
+          
+            
+          
+          linux常用指令
+查看当前路径 pwd
+
+清屏： clear
+
+退出当前命令： ctrl+c 彻底退出
+
+执行睡眠 ： ctrl+z 挂起当前进程fg 恢复后台
+
+查看当前用户 id： id  / id 用户名
+[root@localhost ~]# id lamp
+ uid=501(lamp) gid=501(lamp) groups=501(lamp)
+#能看到uid(用户ID)、gid(初
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-16 17:01" pubdate>
+              2020-09-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/linux/">linux</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">linux 常用指令</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/07/vuex/">vuex</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/07/vuex/">
+          
+          
+            
+          
+          vuex
+vuex是一个专为vue.js应用程序开发的状态管理模式，它采用集中式存储管理应用的所有组件的状态，并且以相应的规则保证状态以一种可预测的方式发生变化。
+
+什么是“状态管理模式”？
+从一个简单的 Vue 计数应用开始：
+new Vue(&#123;
+  // state
+  data () &#123;
+    return &#123;
+      count: 0
+    &#125
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-07 16:51" pubdate>
+              2020-09-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">vue</a>
+            
+              <a href="/tags/vuex/">vuex</a>
+            
+              <a href="/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/">状态管理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/04/SASS-SCSS-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">SASS(SCSS)基本语法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/04/SASS-SCSS-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+          
+          
+            
+          
+          SASS使用变量sass使用$符号来标识变量（老版本的sass使用!来标识变量。）
+变量声明任何可以用作css属性值的赋值都可以用作sass的变量值。
+$highlight-color: #F90;
+
+或以空格分割的多个属性值，
+$basic-border: 1px solid black;
+
+或以逗号分割的多个属性值，
+$plain-font: &quot;Myriad Pro&quot;,My
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-04 22:33" pubdate>
+              2020-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/sass/">sass</a>
+            
+              <a href="/tags/scss/">scss</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/04/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E7%9A%84%E5%AE%9E%E7%8E%B0/">常见布局的实现（1）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/04/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E7%9A%84%E5%AE%9E%E7%8E%B0/">
+          
+          
+            
+          
+          常见布局的实现（1）两侧固定，中间自适应的三栏布局
+&lt;div class=&quot;layout&quot;&gt;
+  &lt;div class=&quot;left&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mid&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;right&quot;&gt;&lt
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-04 15:22" pubdate>
+              2020-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CSS/">CSS</a>
+            
+              <a href="/tags/%E5%B8%83%E5%B1%80/">布局</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/03/AMD%E5%92%8CCMD%E7%9A%84%E5%8C%BA%E5%88%AB/">前端模块化（AMD/CMD)</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/03/AMD%E5%92%8CCMD%E7%9A%84%E5%8C%BA%E5%88%AB/">
+          
+          
+            
+          
+          AMD/CMD模块化的理解什么是模块？
+
+将一个复杂程序依据一定的规范封装成模块（文件），并组合在一起；
+模块的内部数据与实现是私有的，只是向外暴露一些接口（方法）与外部模块通信。
+
+模块化的演变过程
+
+全局function模式
+将不同功能封装成不同的全局函数
+function m1()&#123;
+	//...
+&#125;
+function m2()&#123;
+	//...
+&#125;
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-03 19:52" pubdate>
+              2020-09-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/AMD/">AMD</a>
+            
+              <a href="/tags/CMD/">CMD</a>
+            
+              <a href="/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/">模块化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/02/BFC/">BFC</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/02/BFC/">
+          
+          
+            
+          
+          块级格式化上下文(BFC)
+这些规则允许元素建立自己内部的块级格式化上下文，包括：
+
+display属性值设置为inline-block或table-cell；
+float属性值不是none的元素；
+绝对定位的元素；
+overflow属性值不是visible的元素。
+
+
+BFC的布局规则
+属于同一个BFC的两个相邻盒子的margin会发生折叠。
+所有块级盒子的左边界默认与包含块的左边界对齐。
+BF
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-02 22:26" pubdate>
+              2020-09-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CSS/">CSS</a>
+            
+              <a href="/tags/BFC/">BFC</a>
+            
+              <a href="/tags/block-formatting-context/">block formatting context</a>
+            
+              <a href="/tags/%E5%9D%97%E7%BA%A7%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%96%87/">块级格式化上下文</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

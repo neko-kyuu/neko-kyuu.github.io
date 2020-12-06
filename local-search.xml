@@ -4,11 +4,362 @@
   
   
   <entry>
+    <title>sql多表join出现重复数据及解决方案</title>
+    <link href="/2020/12/06/sql%E5%A4%9A%E8%A1%A8join%E5%87%BA%E7%8E%B0%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <url>/2020/12/06/sql%E5%A4%9A%E8%A1%A8join%E5%87%BA%E7%8E%B0%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>后端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>sql</tag>
+      
+      <tag>join</tag>
+      
+      <tag>group by</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>微信小程序跳转到H5页面</title>
+    <link href="/2020/12/06/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B7%B3%E8%BD%AC%E5%88%B0H5%E9%A1%B5%E9%9D%A2/"/>
+    <url>/2020/12/06/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B7%B3%E8%BD%AC%E5%88%B0H5%E9%A1%B5%E9%9D%A2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="微信小程序跳转到H5页面"><a href="#微信小程序跳转到H5页面" class="headerlink" title="微信小程序跳转到H5页面"></a>微信小程序跳转到H5页面</h1><blockquote><p><strong>微信小程序</strong>：虽然开发方法类似网页，但实际上是一种只能运行在微信自己开发的浏览器中的特殊网页，它所能够使用的所有功能都必须由微信浏览器提供；<br><strong>H5页面</strong>：这是真正的网页应用，运行在通用浏览器中，各种浏览器虽然在细微上有所差别，但总的来说是一致的，微信浏览器同时也是一种通用浏览器，能够支持真正的网页应用。</p></blockquote><p>由于<code>web-view</code>组件是一个全屏组件，不能和其它小程序组件合用，因此需要独立占据一个页面，所以以下例子就是在小程序的A页面加一个链接，跳转到B页面，然后在B页面使用<code>web-view</code>组件来加载H5页面。</p><p><strong>A页面</strong></p><pre><code class="hljs jsx">&lt;view <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;answerer flex-wrp&quot;</span> bindtap=<span class="hljs-string">&#x27;jumpToH5&#x27;</span>&gt;        &lt;view <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;avatar flex-item&quot;</span>&gt;            &lt;image src=<span class="hljs-string">&quot;/images/logo-small.jpg&quot;</span>&gt;&lt;/image&gt;        &lt;/view&gt;        &lt;view <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;answerer-info flex-item&quot;</span>&gt;            &lt;text <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;answerer-name&quot;</span>&gt;文章标题&lt;/text&gt;            &lt;text <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;answerer-des&quot;</span>&gt;文章摘要&lt;/text&gt;        &lt;/view&gt;        &lt;view <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;follow flex-item&quot;</span>&gt;            &lt;text&gt;十 关注&lt;/text&gt;        &lt;/view&gt;&lt;/view&gt;</code></pre><pre><code class="hljs jsx">jumpToH5: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;    wx.navigateTo(&#123;      url: <span class="hljs-string">&#x27;/pages/B&#x27;</span>    &#125;)  &#125;,</code></pre><p><strong>B页面</strong></p><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">web-view</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&#123;&#123;link&#125;&#125;&quot;</span> <span class="hljs-attr">bindmessage</span>=<span class="hljs-string">&quot;getMessage&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">web-view</span>&gt;</span></code></pre><pre><code class="hljs css"><span class="hljs-selector-tag">data</span>: &#123;  <span class="hljs-attribute">link</span>: <span class="hljs-string">&quot;https://www.mysite.com/h5page&quot;</span>&#125;,</code></pre><h2 id="小程序中web-view登录状态问题解决方案"><a href="#小程序中web-view登录状态问题解决方案" class="headerlink" title="小程序中web-view登录状态问题解决方案"></a>小程序中web-view登录状态问题解决方案</h2><p>1、小程序中，封装统一的接口请求方法（以便在每个接口中都携带 cookie，放在 header 中）；</p><pre><code class="hljs js"><span class="hljs-keyword">const</span> request = <span class="hljs-function"><span class="hljs-params">parameter</span> =&gt;</span> &#123;    <span class="hljs-comment">//url必填项</span>    <span class="hljs-keyword">if</span> (!parameter || parameter == &#123;&#125; || !parameter.url) &#123;        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Data request can not be executed without URL.&#x27;</span>);        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;    &#125; <span class="hljs-keyword">else</span> &#123;        <span class="hljs-keyword">var</span> murl = parameter.url;        <span class="hljs-keyword">var</span> headerCookie = wx.getStorageSync(<span class="hljs-string">&#x27;cookie&#x27;</span>);        <span class="hljs-comment">//判断是否有独自cookie请求</span>        <span class="hljs-keyword">var</span> selfCookie = parameter.selfCookie;        selfCookie &amp;&amp; (headerCookie += selfCookie);        wx.request(&#123;            url: murl,            data: parameter.data || &#123;&#125;,            header: &#123;                <span class="hljs-comment">// &#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;,</span>                <span class="hljs-string">&#x27;Cookie&#x27;</span>: headerCookie            &#125;,            method: parameter.method || <span class="hljs-string">&#x27;POST&#x27;</span>,            success: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;                parameter.success &amp;&amp; parameter.success(res);            &#125;,            fail: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;                parameter.fail &amp;&amp; parameter.fail(e);                <span class="hljs-comment">// console.log(e.errMsg);</span>                wx.showToast(&#123;                    title: <span class="hljs-string">&#x27;网络信号较差&#x27;</span>,                    icon: <span class="hljs-string">&#x27;loading&#x27;</span>,                    duration: <span class="hljs-number">3000</span>                &#125;);            &#125;,            complete: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;                parameter.complete &amp;&amp; parameter.complete();            &#125;        &#125;);    &#125;&#125;</code></pre><p>2、小程序中，当用户成功登录之后，保存当前cookie；</p><pre><code class="hljs js">utils.request(&#123;　　url: url,   data: &#123;&#125;,   success: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;   　　wx.setStorageSync(<span class="hljs-string">&#x27;cookie&#x27;</span>, res.header[<span class="hljs-string">&quot;Set-Cookie&quot;</span>]);   &#125;&#125;);</code></pre><p>3、在<code>&lt;web-view&gt;&lt;/web-view&gt;</code> 内嵌 H5 的页面，获取已保存的 cookie 值，使用 url 拼接的方式传给 H5 页面；</p><pre><code class="hljs js"><span class="hljs-comment">// &lt;web-view&gt; 页面模板&lt;view&gt;</span>  &lt;web-view src=<span class="hljs-string">&quot;&#123;&#123;url&#125;&#125;&quot;</span> &gt;&lt;/web-view&gt;&lt;<span class="hljs-regexp">/view&gt;/</span><span class="hljs-regexp">/cookie 处理</span><span class="hljs-regexp">let value = wx.getStorageSync(&#x27;cookie&#x27;)，cookie_vl;</span><span class="hljs-regexp"></span><span class="hljs-regexp">　　if (value) &#123;</span><span class="hljs-regexp">　　　　cookie_vl= value.match(new RegExp(&quot;(^| )&quot;+&quot;jxi-m-sid&quot;+&quot;=([^;]*)(;|$)&quot;))[2] ;</span><span class="hljs-regexp">　　&#125;</span><span class="hljs-regexp"></span><span class="hljs-regexp">　　/</span><span class="hljs-regexp">/ 处理 url，拼接 cookie 值</span><span class="hljs-regexp"></span><span class="hljs-regexp">　　this.setData(&#123;</span><span class="hljs-regexp">　　　　url: `$&#123;this.data.url&#125;?$&#123;cookie_vl&#125;`</span><span class="hljs-regexp">　　&#125;);</span></code></pre><p>4、在H5中的处理方法是： 获取 cookie 值并写入。</p><pre><code class="hljs js"><span class="hljs-keyword">let</span> cookie = <span class="hljs-built_in">window</span>.location.href.split(<span class="hljs-string">&#x27;?&#x27;</span>)[<span class="hljs-number">1</span>];<span class="hljs-built_in">document</span>.cookie = <span class="hljs-string">`jxi-m-sid=<span class="hljs-subst">$&#123;cookie&#125;</span>;domain=<span class="hljs-subst">$&#123;host&#125;</span>;path=/`</span>;</code></pre><p><code>host </code>是 H5 链接中的域名。</p><p>接口发送请求时会携带该 cookie，后端获取后就可以判断登录状态了。</p><p><strong>小程序cookie相关参考资料</strong></p><p>[一行代码让微信小程序支持 cookie ](<a href="https://segmentfault.com/a/1190000015326638">https://segmentfault.com/a/1190000015326638</a><br><a href="https://developers.weixin.qq.com/community/develop/doc/00008885d540904efba79544056406">https://developers.weixin.qq.com/community/develop/doc/00008885d540904efba79544056406</a>)</p><p><a href="https://www.jianshu.com/p/455674b6b923">微信小程序设置cookie</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://www.jianshu.com/p/3c8e84c6e67d">https://www.jianshu.com/p/3c8e84c6e67d</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="https://blog.csdn.net/weixin_30783629/article/details/98301216">https://blog.csdn.net/weixin_30783629/article/details/98301216</a><a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>web-view</tag>
+      
+      <tag>微信小程序</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>移动端rem转换</title>
+    <link href="/2020/12/06/%E7%A7%BB%E5%8A%A8%E7%AB%AFrem%E8%BD%AC%E6%8D%A2/"/>
+    <url>/2020/12/06/%E7%A7%BB%E5%8A%A8%E7%AB%AFrem%E8%BD%AC%E6%8D%A2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="移动端根据设计稿宽度适配-px转换相对单位rem"><a href="#移动端根据设计稿宽度适配-px转换相对单位rem" class="headerlink" title="移动端根据设计稿宽度适配 px转换相对单位rem"></a>移动端根据设计稿宽度适配 px转换相对单位rem</h1><p>为了计算方便，一般建议 <code>1rem = 100px</code>(设计稿px)，要换算这样的比例需要设置html对应的<code>fontSize</code>，计算规则如下：<br><code>fontSize = 屏幕宽度 / 设计稿宽度 * 基本宽度</code><br>如果基本宽度是100，那么 <code>1rem = 100px</code>(设计稿px)</p><p>假如设计稿宽度是 750px , 开发以iphone6/7/8为例，宽度是375，如果想1rem=100px(设计稿px)，那么fontSize = 375/750*100 = 50px;</p><p>以下代码可以按设计稿适配1rem = 100px;<br>(设置参数即可)</p><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width,initial-scale=1.0,maximim-scale=1.0,minimum-scale=1.0,user-scalable=no&quot;</span>&gt;</span></code></pre><pre><code class="hljs css"><span class="hljs-selector-class">.wrap</span> &#123;<span class="hljs-attribute">width</span>: <span class="hljs-number">7.5rem</span>; <span class="hljs-comment">/* 6.4rem 10.8rem */</span>&#125;<span class="hljs-selector-class">.test</span> &#123;<span class="hljs-attribute">width</span>: <span class="hljs-number">1rem</span>; <span class="hljs-comment">/* 设计稿实际宽度100px */</span>&#125;</code></pre><pre><code class="hljs js"><span class="hljs-keyword">var</span> baseSize = <span class="hljs-number">100</span>; <span class="hljs-comment">// 1rem = 100px(设计稿);</span><span class="hljs-keyword">var</span> baseWidth = <span class="hljs-number">750</span>; <span class="hljs-comment">// 640 750 1080</span><span class="hljs-keyword">var</span> fontSize = (<span class="hljs-built_in">document</span>.documentElement.clientWidth / baseWidth * baseSize).toFixed(<span class="hljs-number">2</span>);<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">&quot;html&quot;</span>)[<span class="hljs-number">0</span>].style.fontSize = fontSize+<span class="hljs-string">&quot;px&quot;</span>;</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CSS</tag>
+      
+      <tag>rem</tag>
+      
+      <tag>移动端开发</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>DOS攻击</title>
+    <link href="/2020/12/06/DOS%E6%94%BB%E5%87%BB/"/>
+    <url>/2020/12/06/DOS%E6%94%BB%E5%87%BB/</url>
+    
+    <content type="html"><![CDATA[<h1 id="慢速DOS攻击"><a href="#慢速DOS攻击" class="headerlink" title="慢速DOS攻击"></a>慢速DOS攻击</h1><p>“slow HTTP POST”拒绝服务（DoS）攻击，这是一个应用程序级DoS，它通过缓慢地将流量发送到服务器来维持开放的连接较长时间，从而消耗服务器资源。如果服务器一次维护的连接过多，则可能无法响应新的合法连接。与带宽消耗DoS攻击不同，“慢速”攻击不需要将大量流量发送到服务器，只需要能够保持几分钟的开放连接。</p><p>该攻击通过发送适当构造的HTTP POST标头来保持服务器连接的打开状态，这些标头包含一个Content-Length标头，该标头的值较大，以通知Web服务器需要多少数据。完全发送HTTP POST标头后，HTTP POST消息正文以慢速发送，以延长连接的完成时间并锁定服务器资源。通过等待完整的请求正文，服务器可以帮助连接速度较慢或断断续续的客户端完成请求，但同时也会使其自身遭受滥用。</p><p>Futher information can be found under <a href="https://media.blackhat.com/bh-dc-11/Brennan/BlackHat_DC_2011_Brennan_Denial_Service-Slides.pdf">BlackHat DC 2011 Brennan Denial Service-Slides.pdf</a>.</p><p><strong>服务器端的解决方法</strong> 常用推荐如下</p><ul><li>对每个表单请求限制可接受大小</li><li>建立最小可接受速率</li><li>建立与POST请求的绝对超时定义（absolute request timeout）</li></ul><p>Server-specific details can be found <a href="https://blog.qualys.com/securitylabs/2011/11/02/how-to-protect-against-slow-http-attacks">here</a>.<br>A tool that demonstrates this vulnerability in a more intrusive manner is available <a href="https://github.com/shekyan/slowhttptest">here</a>. More information <a href="https://www.cnblogs.com/v1vvwv/p/slowHTTPtest-attack-and-defense.html">solution</a>.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>安全</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>slow HTTP POST</tag>
+      
+      <tag>DOS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ES6 函数的扩展</title>
+    <link href="/2020/12/06/ES6-%E5%87%BD%E6%95%B0%E7%9A%84%E6%8B%93%E5%B1%95/"/>
+    <url>/2020/12/06/ES6-%E5%87%BD%E6%95%B0%E7%9A%84%E6%8B%93%E5%B1%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="ES6-函数的扩展"><a href="#ES6-函数的扩展" class="headerlink" title="ES6 函数的扩展"></a>ES6 函数的扩展</h1><h2 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>ES6 允许为函数的参数设置默认值，即直接写在参数定义的后面。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">log</span>(<span class="hljs-params">x, y = <span class="hljs-string">&#x27;World&#x27;</span></span>) </span>&#123;  <span class="hljs-built_in">console</span>.log(x, y);&#125;log(<span class="hljs-string">&#x27;Hello&#x27;</span>) <span class="hljs-comment">// Hello World</span>log(<span class="hljs-string">&#x27;Hello&#x27;</span>, <span class="hljs-string">&#x27;China&#x27;</span>) <span class="hljs-comment">// Hello China</span>log(<span class="hljs-string">&#x27;Hello&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-comment">// Hello</span></code></pre><p>使用参数默认值时，不能用<code>let</code>或<code>const</code>再次声明。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">x = <span class="hljs-number">5</span></span>) </span>&#123;  <span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>; <span class="hljs-comment">// 报错</span>  <span class="hljs-keyword">const</span> x = <span class="hljs-number">2</span>; <span class="hljs-comment">// 报错</span>&#125;</code></pre><p>使用参数默认值时，函数不能有同名参数。</p><pre><code class="hljs javascript"><span class="hljs-comment">// 不报错</span><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">x, x, y</span>) </span>&#123;  <span class="hljs-comment">// ...</span>&#125;<span class="hljs-comment">// 报错</span><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">x, x, y = <span class="hljs-number">1</span></span>) </span>&#123;  <span class="hljs-comment">// ...</span>&#125;<span class="hljs-comment">// SyntaxError: Duplicate parameter name not allowed in this context</span></code></pre><h3 id="与解构赋值默认值结合使用"><a href="#与解构赋值默认值结合使用" class="headerlink" title="与解构赋值默认值结合使用"></a>与解构赋值默认值结合使用</h3><p>参数默认值可以与解构赋值的默认值，结合起来使用。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">&#123;x, y = <span class="hljs-number">5</span>&#125;</span>) </span>&#123;  <span class="hljs-built_in">console</span>.log(x, y);&#125;foo(&#123;&#125;) <span class="hljs-comment">// undefined 5</span>foo(&#123;<span class="hljs-attr">x</span>: <span class="hljs-number">1</span>&#125;) <span class="hljs-comment">// 1 5</span>foo(&#123;<span class="hljs-attr">x</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>&#125;) <span class="hljs-comment">// 1 2</span>foo() <span class="hljs-comment">// TypeError: Cannot read property &#x27;x&#x27; of undefined</span></code></pre><p>上面代码只使用了对象的解构赋值默认值，没有使用函数参数的默认值。只有当函数<code>foo</code>的参数是一个对象时，变量<code>x</code>和<code>y</code>才会通过解构赋值生成。如果函数<code>foo</code>调用时没提供参数，变量<code>x</code>和<code>y</code>就不会生成，从而报错。通过提供函数参数的默认值，就可以避免这种情况。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">&#123;x, y = <span class="hljs-number">5</span>&#125; = &#123;&#125;</span>) </span>&#123;  <span class="hljs-built_in">console</span>.log(x, y);&#125;foo() <span class="hljs-comment">// undefined 5</span></code></pre><p>上面代码指定，如果没有提供参数，函数<code>foo</code>的参数默认为一个空对象。</p><p><strong>函数参数默认值与对象解构赋值的区别（实例）：</strong></p><pre><code class="hljs javascript"><span class="hljs-comment">// 写法一</span><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">m1</span>(<span class="hljs-params">&#123;x = <span class="hljs-number">0</span>, y = <span class="hljs-number">0</span>&#125; = &#123;&#125;</span>) </span>&#123;  <span class="hljs-keyword">return</span> [x, y];&#125;<span class="hljs-comment">// 写法二</span><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">m2</span>(<span class="hljs-params">&#123;x, y&#125; = &#123; x: <span class="hljs-number">0</span>, y: <span class="hljs-number">0</span> &#125;</span>) </span>&#123;  <span class="hljs-keyword">return</span> [x, y];&#125;</code></pre><p>上面两种写法都对函数的参数设定了默认值，区别是写法一函数参数的默认值是空对象，但是设置了<strong>对象解构赋值的默认值</strong>；写法二<strong>函数参数的默认值</strong>是一个有具体属性的对象，但是没有设置对象解构赋值的默认值。</p><pre><code class="hljs javascript"><span class="hljs-comment">// 函数没有参数的情况</span>m1() <span class="hljs-comment">// [0, 0]</span>m2() <span class="hljs-comment">// [0, 0]</span><span class="hljs-comment">// x 和 y 都有值的情况</span>m1(&#123;<span class="hljs-attr">x</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">8</span>&#125;) <span class="hljs-comment">// [3, 8]</span>m2(&#123;<span class="hljs-attr">x</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">8</span>&#125;) <span class="hljs-comment">// [3, 8]</span><span class="hljs-comment">// x 有值，y 无值的情况</span>m1(&#123;<span class="hljs-attr">x</span>: <span class="hljs-number">3</span>&#125;) <span class="hljs-comment">// [3, 0]</span>m2(&#123;<span class="hljs-attr">x</span>: <span class="hljs-number">3</span>&#125;) <span class="hljs-comment">// [3, undefined]</span><span class="hljs-comment">// x 和 y 都无值的情况</span>m1(&#123;&#125;) <span class="hljs-comment">// [0, 0];</span>m2(&#123;&#125;) <span class="hljs-comment">// [undefined, undefined]</span>m1(&#123;<span class="hljs-attr">z</span>: <span class="hljs-number">3</span>&#125;) <span class="hljs-comment">// [0, 0]</span>m2(&#123;<span class="hljs-attr">z</span>: <span class="hljs-number">3</span>&#125;) <span class="hljs-comment">// [undefined, undefined]</span></code></pre><h3 id="参数默认值的位置"><a href="#参数默认值的位置" class="headerlink" title="参数默认值的位置"></a>参数默认值的位置</h3><p>如果非尾部的参数设置默认值，实际上这个参数是没法省略的。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x = <span class="hljs-number">1</span>, y</span>) </span>&#123;  <span class="hljs-keyword">return</span> [x, y];&#125;f() <span class="hljs-comment">// [1, undefined]</span>f(<span class="hljs-number">2</span>) <span class="hljs-comment">// [2, undefined]</span>f(, <span class="hljs-number">1</span>) <span class="hljs-comment">// 报错</span>f(<span class="hljs-literal">undefined</span>, <span class="hljs-number">1</span>) <span class="hljs-comment">// [1, 1]</span></code></pre><p>如果传入<code>undefined</code>，将触发该参数等于默认值，<code>null</code>则没有这个效果。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">x = <span class="hljs-number">5</span>, y = <span class="hljs-number">6</span></span>) </span>&#123;  <span class="hljs-built_in">console</span>.log(x, y);&#125;foo(<span class="hljs-literal">undefined</span>, <span class="hljs-literal">null</span>)<span class="hljs-comment">// 5 null</span></code></pre><h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>一旦<strong>设置了参数的默认值</strong>，函数进行声明初始化时，参数会形成一个单独的作用域（context）。等到初始化结束，这个作用域就会消失。这种语法行为，在不设置参数默认值时，是不会出现的。</p><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span>;<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x, y = x</span>) </span>&#123;  <span class="hljs-built_in">console</span>.log(y);&#125;f(<span class="hljs-number">2</span>) <span class="hljs-comment">// 2</span></code></pre><p>在这个作用域里面，默认值变量<code>x</code>指向第一个参数<code>x</code>，而不是全局变量<code>x</code>，所以输出是<code>2</code>。</p><p>再看下面的例子。</p><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>;<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">y = x</span>) </span>&#123;  <span class="hljs-keyword">let</span> x = <span class="hljs-number">2</span>;  <span class="hljs-built_in">console</span>.log(y);&#125;f() <span class="hljs-comment">// 1</span></code></pre><p>上面代码中，函数<code>f</code>调用时，参数<code>y = x</code>形成一个单独的作用域。这个作用域里面，变量<code>x</code>本身没有定义，所以指向外层的全局变量<code>x</code>。函数调用时，函数体内部的局部变量<code>x</code>影响不到默认值变量<code>x</code>。</p><h2 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h2><p>ES6 引入 rest 参数（形式为<code>...变量名</code>），用于获取函数的多余参数，这样就不需要使用<code>arguments</code>对象了。<strong>rest 参数搭配的变量是一个数组</strong>，该变量将多余的参数放入数组中。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">...values</span>) </span>&#123;  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> val <span class="hljs-keyword">of</span> values) &#123;    sum += val;  &#125;  <span class="hljs-keyword">return</span> sum;&#125;add(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>) <span class="hljs-comment">// 10</span></code></pre><p>上面代码的<code>add</code>函数是一个求和函数，利用 rest 参数，可以向该函数传入任意数目的参数。</p><p>下面是一个 rest 参数代替<code>arguments</code>变量的例子。</p><pre><code class="hljs javascript"><span class="hljs-comment">// arguments变量的写法</span><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sortNumbers</span>(<span class="hljs-params"></span>) </span>&#123;  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>).sort();&#125;<span class="hljs-comment">// rest参数的写法</span><span class="hljs-keyword">const</span> sortNumbers = <span class="hljs-function">(<span class="hljs-params">...numbers</span>) =&gt;</span> numbers.sort();</code></pre><h2 id="name属性"><a href="#name属性" class="headerlink" title="name属性"></a>name属性</h2><p>函数的<code>name</code>属性，返回该函数的函数名。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;&#125;foo.name <span class="hljs-comment">// &quot;foo&quot;</span></code></pre><p>如果将一个匿名函数赋值给一个变量，ES5 的<code>name</code>属性，会返回空字符串，而 ES6 的<code>name</code>属性会返回实际的函数名。</p><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;;<span class="hljs-comment">// ES5</span>f.name <span class="hljs-comment">// &quot;&quot;</span><span class="hljs-comment">// ES6</span>f.name <span class="hljs-comment">// &quot;f&quot;</span></code></pre><p><code>bind</code>返回的函数，<code>name</code>属性值会加上<code>bound</code>前缀。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;&#125;;foo.bind(&#123;&#125;).name <span class="hljs-comment">// &quot;bound foo&quot;</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;).bind(&#123;&#125;).name <span class="hljs-comment">// &quot;bound &quot;</span></code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> f = <span class="hljs-function">() =&gt;</span> <span class="hljs-number">5</span>;<span class="hljs-comment">// 等同于</span><span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-number">5</span> &#125;;<span class="hljs-keyword">var</span> sum = <span class="hljs-function">(<span class="hljs-params">num1, num2</span>) =&gt;</span> num1 + num2;<span class="hljs-comment">// 等同于</span><span class="hljs-keyword">var</span> sum = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num1, num2</span>) </span>&#123;  <span class="hljs-keyword">return</span> num1 + num2;&#125;;</code></pre><p>箭头函数可以与变量解构结合使用。</p><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> full = <span class="hljs-function">(<span class="hljs-params">&#123; first, last &#125;</span>) =&gt;</span> first + <span class="hljs-string">&#x27; &#x27;</span> + last;<span class="hljs-comment">// 等同于</span><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">full</span>(<span class="hljs-params">person</span>) </span>&#123;  <span class="hljs-keyword">return</span> person.first + <span class="hljs-string">&#x27; &#x27;</span> + person.last;&#125;</code></pre><h3 id="箭头函数不适用场合"><a href="#箭头函数不适用场合" class="headerlink" title="箭头函数不适用场合"></a>箭头函数不适用场合</h3><p>第一个场合是定义对象的方法，且该方法内部包括<code>this</code>。</p><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> cat = &#123;  lives: <span class="hljs-number">9</span>,  jumps: <span class="hljs-function">() =&gt;</span> &#123;    <span class="hljs-built_in">this</span>.lives--;  &#125;&#125;</code></pre><p>上面代码中，<code>cat.jumps()</code>方法是一个箭头函数，这是错误的。调用<code>cat.jumps()</code>时，如果是普通函数，该方法内部的<code>this</code>指向<code>cat</code>；如果写成上面那样的箭头函数，使得<code>this</code>指向全局对象，因此不会得到预期结果。这是因为<strong>对象不构成单独的作用域</strong>，导致<code>jumps</code>箭头函数定义时的作用域就是全局作用域。</p><p>第二个场合是需要动态<code>this</code>的时候，也不应使用箭头函数。</p><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> button = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;press&#x27;</span>);button.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;  <span class="hljs-built_in">this</span>.classList.toggle(<span class="hljs-string">&#x27;on&#x27;</span>);&#125;);</code></pre><p>上面代码运行时，点击按钮会报错，因为<code>button</code>的监听函数是一个箭头函数，导致里面的<code>this</code>就是全局对象。如果改成普通函数，<code>this</code>就会动态指向被点击的按钮对象。</p><h2 id="尾调用优化"><a href="#尾调用优化" class="headerlink" title="尾调用优化"></a>尾调用优化</h2><p>尾调用（Tail Call）是函数式编程的一个重要概念，本身非常简单，一句话就能说清楚，就是指某个函数的最后一步是调用另一个函数。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x</span>)</span>&#123;  <span class="hljs-keyword">return</span> g(x);&#125;</code></pre><h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>尾调用特殊在于它的<strong>调用位置</strong>。</p><p>函数调用会在内存形成一个“调用记录”，又称“调用帧”（call frame），保存调用位置和内部变量等信息。如果在函数<code>A</code>的内部调用函数<code>B</code>，那么在<code>A</code>的调用帧上方，还会形成一个<code>B</code>的调用帧。等到<code>B</code>运行结束，将结果返回到<code>A</code>，<code>B</code>的调用帧才会消失。如果函数<code>B</code>内部还调用函数<code>C</code>，那就还有一个<code>C</code>的调用帧，以此类推。所有的调用帧，就形成一个“调用栈”（call stack）。</p><p>尾调用由于是函数的最后一步操作，所以不需要保留外层函数的调用帧，只要直接用内层函数的调用帧，取代外层函数的调用帧就可以了。“尾调用优化”（Tail call optimization），即只保留内层函数的调用帧，大大节省内存。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addOne</span>(<span class="hljs-params">a</span>)</span>&#123;  <span class="hljs-keyword">var</span> one = <span class="hljs-number">1</span>;  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params">b</span>)</span>&#123;    <span class="hljs-keyword">return</span> b + one;  &#125;  <span class="hljs-keyword">return</span> inner(a);&#125;</code></pre><p>上面的函数不会进行尾调用优化，因为内层函数<code>inner</code>用到了外层函数<code>addOne</code>的内部变量<code>one</code>。</p><h3 id="尾递归"><a href="#尾递归" class="headerlink" title="尾递归"></a>尾递归</h3><p>函数调用自身，称为递归。如果尾调用自身，就称为尾递归。</p><p>递归非常耗费内存，因为需要同时保存成千上百个调用帧，很容易发生“栈溢出”错误（stack overflow）。但对于尾递归来说，由于只存在一个调用帧，所以永远不会发生“栈溢出”错误。</p><p><strong>尾递归实例：</strong></p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">factorial</span>(<span class="hljs-params">n</span>) </span>&#123;  <span class="hljs-keyword">if</span> (n === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;  <span class="hljs-keyword">return</span> n * factorial(n - <span class="hljs-number">1</span>);&#125;factorial(<span class="hljs-number">5</span>) <span class="hljs-comment">// 120</span></code></pre><p>改写为尾递归，只保留一个调用记录，复杂度 O(1) 。</p><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">factorial</span>(<span class="hljs-params">n, total</span>) </span>&#123;  <span class="hljs-keyword">if</span> (n === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> total;  <span class="hljs-keyword">return</span> factorial(n - <span class="hljs-number">1</span>, n * total);&#125;factorial(<span class="hljs-number">5</span>, <span class="hljs-number">1</span>) <span class="hljs-comment">// 120</span></code></pre><h3 id="适用模式"><a href="#适用模式" class="headerlink" title="适用模式"></a>适用模式</h3><p>ES6 的尾调用优化只在严格模式下开启，正常模式是无效的。在正常模式下实现尾递归优化的方法就是用“循环”替换掉“递归”。</p><h2 id="函数参数的尾逗号"><a href="#函数参数的尾逗号" class="headerlink" title="函数参数的尾逗号"></a>函数参数的尾逗号</h2><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clownsEverywhere</span>(<span class="hljs-params"></span></span><span class="hljs-function"><span class="hljs-params">  param1,</span></span><span class="hljs-function"><span class="hljs-params">  param2, <span class="hljs-regexp">//</span> 尾逗号，便于代码修改</span></span><span class="hljs-function"><span class="hljs-params"></span>) </span>&#123; <span class="hljs-comment">/* ... */</span> &#125;</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://es6.ruanyifeng.com/#docs/function">https://es6.ruanyifeng.com/#docs/function</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>JS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>js</tag>
+      
+      <tag>ES6</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>PHP获取HTTP body内容</title>
+    <link href="/2020/12/06/PHP%E8%8E%B7%E5%8F%96HTTP-body%E5%86%85%E5%AE%B9/"/>
+    <url>/2020/12/06/PHP%E8%8E%B7%E5%8F%96HTTP-body%E5%86%85%E5%AE%B9/</url>
+    
+    <content type="html"><![CDATA[<h1 id="PHP获取HTTP-body内容"><a href="#PHP获取HTTP-body内容" class="headerlink" title="PHP获取HTTP body内容"></a>PHP获取HTTP body内容</h1><pre><code class="hljs php"><span class="hljs-comment">//获取body里的参数 </span>$bodyData = @file_get_contents(<span class="hljs-string">&#x27;php://input&#x27;</span>); <span class="hljs-comment">//将获取到的值转化为数组格式 </span>$bodyData = json_decode($bodyData,<span class="hljs-literal">true</span>);</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://blog.csdn.net/ljh243581579/article/details/84066853">https://blog.csdn.net/ljh243581579/article/details/84066853</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>后端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>PHP HTTP-body</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>RESTful API 设计指南</title>
+    <link href="/2020/12/06/RESTful-API-%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/"/>
+    <url>/2020/12/06/RESTful-API-%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/</url>
+    
+    <content type="html"><![CDATA[<h1 id="RESTful-API-设计指南"><a href="#RESTful-API-设计指南" class="headerlink" title="RESTful API 设计指南"></a>RESTful API 设计指南</h1><p>前端设备层出不穷，因此必须有一种统一的机制，方便不同的前端设备与后端进行通信。</p><p>RESTful架构（REST, Representational State Transfer）：</p><ol><li>每一个URI代表一种资源；</li><li>客户端和服务器之间，传递这种资源的某种表现层；</li><li>客户端通过四个HTTP动词，对服务器端资源进行操作，实现”表现层状态转化”。</li></ol><h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a><strong>协议</strong></h2><p>API与用户的通信协议，总是使用<a href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html">HTTPs协议</a>。</p><h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a><strong>域名</strong></h2><p>应该尽量将API部署在专用域名之下。</p><blockquote><pre><code class="hljs javascript">https:<span class="hljs-comment">//api.example.com</span></code></pre></blockquote><p>如果确定API很简单，不会有进一步扩展，可以考虑放在主域名下。</p><blockquote><pre><code class="hljs javascript">https:<span class="hljs-comment">//example.org/api/</span></code></pre></blockquote><h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a><strong>版本</strong></h2><p>应该将API的版本号放入URL。</p><blockquote><pre><code class="hljs javascript">https:<span class="hljs-comment">//api.example.com/v1/</span></code></pre></blockquote><p>另一种做法是，将版本号放在HTTP头信息中，但不如放入URL方便和直观。<a href="https://developer.github.com/v3/media/#request-specific-version">Github</a>采用这种做法。</p><h2 id="路径"><a href="#路径" class="headerlink" title="路径"></a><strong>路径</strong></h2><p>路径又称”终点”（endpoint），表示API的具体网址。</p><p>在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的”集合”（collection），所以API中的名词也应该使用复数。</p><p>举例来说，有一个API提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样。</p><blockquote><ul><li><a href="https://api.example.com/v1/zoos">https://api.example.com/v1/zoos</a></li><li><a href="https://api.example.com/v1/animals">https://api.example.com/v1/animals</a></li><li><a href="https://api.example.com/v1/employees">https://api.example.com/v1/employees</a></li></ul></blockquote><h2 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a><strong>HTTP动词</strong></h2><p>对于资源的具体操作类型，由HTTP动词表示。</p><p>常用的HTTP动词有下面五个（括号里是对应的SQL命令）。</p><blockquote><ul><li>GET（SELECT）：从服务器取出资源（一项或多项）。</li><li>POST（CREATE）：在服务器新建一个资源。</li><li>PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</li><li>PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。</li><li>DELETE（DELETE）：从服务器删除资源。</li></ul></blockquote><p>还有两个不常用的HTTP动词。</p><blockquote><ul><li>HEAD：获取资源的元数据。</li><li>OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的。</li></ul></blockquote><p>下面是一些例子。</p><blockquote><ul><li>GET /zoos：列出所有动物园</li><li>POST /zoos：新建一个动物园</li><li>GET /zoos/ID：获取某个指定动物园的信息</li><li>PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）</li><li>PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）</li><li>DELETE /zoos/ID：删除某个动物园</li><li>GET /zoos/ID/animals：列出某个指定动物园的所有动物</li><li>DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物</li></ul></blockquote><h2 id="过滤信息"><a href="#过滤信息" class="headerlink" title="过滤信息"></a><strong>过滤信息</strong></h2><p>如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。</p><p>下面是一些常见的参数。</p><blockquote><ul><li>?limit=10：指定返回记录的数量</li><li>?offset=10：指定返回记录的开始位置。</li><li>?page=2&amp;per_page=100：指定第几页，以及每页的记录数。</li><li>?sortby=name&amp;order=asc：指定返回结果按照哪个属性排序，以及排序顺序。</li><li>?animal_type_id=1：指定筛选条件</li></ul></blockquote><p>参数的设计允许存在冗余，即允许API路径和URL参数偶尔有重复。比如，GET /zoo/ID/animals 与 GET /animals?zoo_id=ID 的含义是相同的。</p><h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a><strong>状态码</strong></h2><p>服务器向用户返回的状态码和提示信息，常见的有以下一些（方括号中是该状态码对应的HTTP动词）。</p><blockquote><ul><li>200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。</li><li>201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。</li><li>202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）</li><li>204 NO CONTENT - [DELETE]：用户删除数据成功。</li><li>400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。</li><li>401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。</li><li>403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。</li><li>404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。</li><li>406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。</li><li>410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。</li><li>422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。</li><li>500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。</li></ul></blockquote><p>状态码的完全列表参见<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">这里</a>。</p><h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>如果状态码是4xx，就应该向用户返回出错信息。一般来说，返回的信息中将error作为键名，出错信息作为键值即可。</p><blockquote><pre><code class="hljs javascript">&#123; error: <span class="hljs-string">&quot;Invalid API key&quot;</span>&#125;</code></pre></blockquote><h2 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h2><p>针对不同操作，服务器向用户返回的结果应该符合以下规范。</p><blockquote><ul><li>GET /collection：返回资源对象的列表（数组）</li><li>GET /collection/resource：返回单个资源对象</li><li>POST /collection：返回新生成的资源对象</li><li>PUT /collection/resource：返回完整的资源对象</li><li>PATCH /collection/resource：返回完整的资源对象</li><li>DELETE /collection/resource：返回一个空文档</li></ul></blockquote><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>API</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>linux网络编程</title>
+    <link href="/2020/12/06/LINUX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    <url>/2020/12/06/LINUX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="linux-网络编程"><a href="#linux-网络编程" class="headerlink" title="linux 网络编程"></a>linux 网络编程</h1><h2 id="TCP-IP协议概述"><a href="#TCP-IP协议概述" class="headerlink" title="TCP/IP协议概述"></a>TCP/IP协议概述</h2><p>协议protocol：通信双方必须遵循的规矩。</p><p>TCP/IP协议族是一组协议的集合，也叫互联网协议族，用来实现互联网上主机之间的相互通信。</p><p><strong>TCP/IP模型4层:</strong></p><p>应用层{http超文本传输协议  ftp文件传输协议  telnet远程登录  ssh安全外壳协议  stmp简单邮件发送  pop3收邮件}</p><p>传输层{tcp传输控制协议,udp用户数据包协议}</p><p>网络层{ip网际互联协议 icmp网络控制消息协议 igmp网络组管理协议}</p><p>网络接口层{arp地址转换协议,rarp反向地址转换协议，mpls多协议标签交换}</p><p><strong>TCP与UDP的区别</strong></p><table><thead><tr><th></th><th>TCP</th><th>UDP</th></tr></thead><tbody><tr><td>优点</td><td>可靠，稳定。<br/>TCP 的可靠体现在 TCP 在传递数据之前，会有三次握手来建立连接，而且在数据传递时，有确认、窗口、重传、拥塞控制机制，在数据传完后，还会断开连接用来节约系统资源。</td><td>快，比 TCP 稍安全。<br/>UDP 没有 TCP 的握手、确认、窗口、重传、拥塞控制等机制，UDP 是一个无状态的传输协议，所以它在传递数据时非常快。没有 TCP 的这些机制，UDP 较 TCP 被攻击者利用的漏洞就要少一些。但 UDP 也是无法避免攻击的，比如：UDP Flood 攻击。</td></tr><tr><td>缺点</td><td>慢，效率低，占用系统资源高，易被攻击。<br/>TCP 在传递数据之前，要先建连接，这会消耗时间，而且在数据传递时，确认机制、重传机制、拥塞控制机制等都会消耗大量的时间，而且要在每台设备上维护所有的传输连接，事实上，每个连接都会占用系统的 CPU、内存等硬件资源。<br/>而且，因为 TCP 有确认机制、三次握手机制，这些也导致 TCP 容易被人利用，实现 DOS、DDOS、CC 等攻击。</td><td>不可靠，不稳定。<br/>因为 UDP 没有 TCP 那些可靠的机制，在数据传递时，如果网络质量不好，就会很容易丢包。</td></tr><tr><td>应用场景</td><td>当对网络通讯质量有要求的时候，比如：整个数据要准确无误的传递给对方，这往往用于一些要求可靠的应用，比如 HTTP、HTTPS、FTP 等传输文件的协议，POP、SMTP 等邮件传输的协议。<br/>在日常生活中，常见使用 TCP 协议的应用如下： 浏览器用的 HTTP， FlashFXP 用的 FTP，Outlook 用的 POP、SMTP，Putty 用的 Telnet、SSH，QQ 文件传输。</td><td>当对网络通讯质量要求不高的时候，要求网络通讯速度能尽量的快，这时就可以使用 UDP。<br/>比如，日常生活中，常见使用 UDP 协议的应用如下：QQ 语音，QQ 视频，TFTP 等。有些应用场景对可靠性要求不高会用到 UPD，比如长视频，要求速率。</td></tr></tbody></table><h2 id="网络相关概念"><a href="#网络相关概念" class="headerlink" title="网络相关概念"></a><strong>网络相关概念</strong></h2><ol><li><p>套接口的概念：</p><p>​        套接口，也叫“套接字”。是操作系统内核中的一个数据结构，它是网络中的节点进行相互通信的门户。它是网络进程的ID。网络通信，归根到底还是进程间的通信（不同计算机上的进程间通信）。在网络中，每一个节点（计算机或路由）都有一个网络地址，也就是IP地址。两个进程通信时，首先要确定各自所在的网络节点的网络地址。但是，网络地址只能确定进程所在的计算机，而一台计算机上很可能同时运行着多个进程，所以仅凭网络地址还不能确定到底是和网络中的哪一个进程进行通信，因此套接口中还需要包括其他的信息，也就是端口号（PORT）。在一台计算机中，一个端口号一次只能分配给一个进程，也就是说，在一台计算机中，端口号和进程之间是一一对应关系。所以，使用端口号和网络地址的组合可以唯一的确定整个网络中的一个网络进程。</p><p>​        例如，如网络中某一台计算机的IP为10.92.20.160，操作系统分配给计算机中某一应用程序进程的端口号为1500，则此时 10.92.20.160  1500就构成了一个套接口。</p></li><li><p>端口号的概念：</p><p>​        在网络技术中，端口大致有两种意思：一是物理意义上的端口，如集线器、交换机、路由器等用于连接其他网络设备的接口。二是指TCP/IP协议中的端口，端口号的范围从0 - 65535，一类是由互联网指派名字和号码公司ICANN负责分配给一些常用的应用程序固定使用的“周知的端口”，其值一般为0 - 1023.例如http的端口号是80，ftp为21，ssh为22，telnet为23等。还有一类是用户自己定义的，通常是大于1024的整型值。</p></li></ol><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://blog.csdn.net/weichanghu_/article/details/81711449">https://blog.csdn.net/weichanghu_/article/details/81711449</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>API 接口签名</title>
+    <link href="/2020/12/06/API-%E6%8E%A5%E5%8F%A3%E7%AD%BE%E5%90%8D/"/>
+    <url>/2020/12/06/API-%E6%8E%A5%E5%8F%A3%E7%AD%BE%E5%90%8D/</url>
+    
+    <content type="html"><![CDATA[<h1 id="API接口签名"><a href="#API接口签名" class="headerlink" title="API接口签名"></a>API接口签名</h1><p>​        前后端分离的开发方式，<strong>以接口为标准来进行推动</strong>，定义好接口，各自开发自己的功能，最后进行<strong>联调整合</strong>。无论是开发原生的APP还是webapp还是PC端的软件，只要是前后端分离的模式，<strong>就避免不了调用后端提供的接口来进行业务交互</strong>。</p><p>​    后端在写对外的API接口时，一般会对参数进行签名来保证接口的安全性，在设计签名算法的时候，主要考虑的是这几个问题：</p><ol><li>请求的来源是否合法</li><li>请求参数是否被篡改</li><li>请求的唯一性</li></ol><h2 id="签名流程"><a href="#签名流程" class="headerlink" title="签名流程"></a>签名流程</h2><p>​        A调用B应用接口时，将请求参数转换为map进行生成签名（需将工具类及秘钥提供给B）。<br>         为保证签名不被篡改及重复使用，根据参数排序生成字符串，加入时间戳（保证请求的唯一性），使用私钥进行加密生成起签名sign，将sign和时间戳作为参数传递给B应用。<br>​         即参数不一样，请求时间不一样，签名即不一样，保证签名唯一。<br>​         且私钥不在网络中传输，保证参数合法且不被篡改。<br>         当有多个应用时，应使用APPID区分每个应用的私钥。</p><p><img src="20063139-d213a90012628d95" alt="img"></p><h2 id="签名规则"><a href="#签名规则" class="headerlink" title="签名规则"></a>签名规则</h2><p>1、线下分配appid和appsecret，针对不同的调用方<strong>分配不同的appid和appsecret</strong></p><p>2、加入<strong>timestamp（时间戳）</strong>，5分钟内数据有效</p><p>3、加入临时<strong>流水号</strong> <strong>nonce（防止重复提交）</strong>，至少为10位。针对查询接口，流水号只用于日志落地，便于后期日志核查。<strong>针对办理类接口需校验流水号在有效期内的唯一性，以避免重复请求</strong>。</p><p>4、加入<strong>签名字段signature</strong>，所有数据的签名信息。</p><p>以上字段放在请求头中。</p><h2 id="生成签名"><a href="#生成签名" class="headerlink" title="生成签名"></a>生成签名</h2><blockquote><p>所有动态参数 = 请求头部分 + 请求URL地址 + 请求Request参数 + 请求Body</p></blockquote><p><strong>请求头部分</strong></p><p>请求头=“appId=xxxx&amp;nonce=xxxx×tamp=xxxx&amp;sign=xxx”</p><p>请求头中的4个参数是必须要传的，否则直接报异常</p><p><strong>请求URL地址</strong></p><p>这个就是请求接口的地址包含协议，如</p><p><a href="https://mso.xxxx.com.cn/api/user">https://mso.xxxx.com.cn/api/user</a></p><p><strong>请求Request参数</strong></p><p>即请求为Get方式的时候，获取的传入的参数</p><p><strong>请求Body</strong></p><p>即请求为Post时，请求体Body</p><p>从request inputstream中获取保存为String形式</p><h2 id="签名算法实现"><a href="#签名算法实现" class="headerlink" title="签名算法实现"></a><strong>签名算法实现</strong></h2><p>基本原理其实也比较简单，就是自定义filter，对每个请求进行处理；整体流程如下：</p><p>1）验证必须的头部参数</p><p>2）获取头部参数，request参数，Url请求路径，请求体Body，把这些值放入SortMap中进行排序</p><p>3）对SortMap里面的值进行拼接</p><p>4）对拼接的值进行加密，生成sign</p><p>5）把生成的sign和前端传入的sign进行比较，如果不相同就返回错误</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://www.jianshu.com/p/25b8d28e4b6a">https://www.jianshu.com/p/25b8d28e4b6a</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="https://www.jianshu.com/p/e2d362ede89f">https://www.jianshu.com/p/e2d362ede89f</a><a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>API</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>抽象类和接口的区别</title>
+    <link href="/2020/12/06/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <url>/2020/12/06/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    
+    <content type="html"><![CDATA[<h1 id="抽象类与接口的区别"><a href="#抽象类与接口的区别" class="headerlink" title="抽象类与接口的区别"></a>抽象类与接口的区别</h1><p>接口是对动作的抽象，抽象类是对本质的抽象。</p><p>抽象类与接口的区别主要有以下几点：</p><ol><li>继承方面：<ul><li>抽象类只能单继承；接口可以多实现</li></ul></li><li>成员属性方面：<ul><li>抽象类中可以有普通属性，也可以有常量</li><li>接口中的成员变量全部默认是常量，使用public static final修饰，这个可以省略不写</li></ul></li><li>代码块方面：<ul><li>抽象类可以含初始化块；接口不能含初始化块</li></ul></li><li>构造函数方面：<ul><li>接口不能有构造函数</li><li>抽象类可以有构函数，但是这里的构造函数不是用来创建对象的，而且用来被实现类调用进行初始化操作的</li></ul></li><li>方法方面：<ul><li>接口里面不能定义静态方法；抽象类里面可以定义静态方法</li><li>接口里面只能是抽象方法；抽象类里面可以有抽象方法也可以有普通方法</li></ul></li></ol><p>接口与抽象类之间的相同之处：</p><ol><li>接口与抽象类都<strong>不能被实例化</strong>，需要被其他进行实现或继承</li><li>接口与抽象类里面都能包含抽象方法，实现接口或继承抽象类的子类都<strong>必须实现这些抽象方法</strong></li></ol><p>针对相同之处的第二点：</p><ol><li>超类是接口：<ul><li>如果使用接口继承(extends，无法使用implements)这个接口，那么在这个子类接口中，可以实现其父类接口中的抽象方法（接口是否可以有具体的实现方法，可以将这种情况举出来）</li><li>如果使用抽象类实现这个接口，可以在这个子类抽象类中实现父类接口中的抽象方法</li><li>如果使用具体类实现这个接口，那么就必须实现父类接口中的所有抽象方法</li></ul></li><li>超类是抽象类：<ul><li>接口不能继承抽象类</li><li>如果使用抽象类继承这个抽象类，可以在这个子类抽象类中实现父类接口中的抽象方法</li><li>如果使用具体类继承这个抽象类，那么就必须实现父类抽象类中的所有抽象方法</li></ul></li></ol><p>对于上面的说明，所以在相同之处的第二点处主要是针对具体类继承抽象类或实现接口来说的。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://blog.csdn.net/weixin_44255799/article/details/109547880?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduend~default-3-109547880.nonecase&amp;utm_term=%E5%87%BD%E6%95%B0%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB&amp;spm=1000.2123.3001.4430">https://blog.csdn.net/weixin_44255799/article/details/109547880?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduend~default-3-109547880.nonecase&amp;utm_term=%E5%87%BD%E6%95%B0%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB&amp;spm=1000.2123.3001.4430</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>基础</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>抽象类 API</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>diff算法</title>
+    <link href="/2020/10/22/diff%E7%AE%97%E6%B3%95/"/>
+    <url>/2020/10/22/diff%E7%AE%97%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="虚拟DOM的Diff算法"><a href="#虚拟DOM的Diff算法" class="headerlink" title="虚拟DOM的Diff算法"></a>虚拟DOM的Diff算法</h1><p>vue和react的虚拟DOM的Diff算法大致相同，其核心是基于两个简单的假设：</p><ol><li>两个相同的组件产生类似的DOM结构，不同的组件产生不同的DOM结构。</li><li>同一层级的一组节点，他们可以通过唯一的id进行区分。基于以上这两点假设，使得虚拟DOM的Diff算法的复杂度从O(n^3)降到了O(n)。</li></ol><p><img src="3297464-0848720c71af2123.jpg"></p><p>使用key来给每个节点做一个唯一标识，Diff算法就可以正确的识别此节点，找到正确的位置区插入新的节点。<strong>key的作用主要是为了高效的更新虚拟DOM。</strong></p><p><img src="1460000015299328"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>vue</tag>
+      
+      <tag>虚拟DOM</tag>
+      
+      <tag>diff</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>浏览器渲染页面的过程</title>
+    <link href="/2020/10/22/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%BF%87%E7%A8%8B/"/>
+    <url>/2020/10/22/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%BF%87%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="浏览器渲染页面的过程"><a href="#浏览器渲染页面的过程" class="headerlink" title="浏览器渲染页面的过程"></a>浏览器渲染页面的过程</h1><h2 id="从-URL-输入到页面展现到底发生了什么？"><a href="#从-URL-输入到页面展现到底发生了什么？" class="headerlink" title="从 URL 输入到页面展现到底发生了什么？"></a>从 URL 输入到页面展现到底发生了什么？</h2><p>具体可参考《<a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">How Browsers Work</a>》</p><p><strong>简单路径线</strong>：</p><ol><li><p>键盘或触屏输入URL并回车确认</p></li><li><p>浏览器查看<strong>缓存</strong>，如果请求资源在缓存中并且新鲜，跳转到转码步骤</p><ol><li><p>如果资源未缓存，发起新请求</p></li><li><p>如果已缓存，检验是否足够新鲜，足够新鲜直接提供给客户端，否则与服务器进行验证。</p><ol><li>检验新鲜通常有两个 HTTP 头进行控制<code>Expires</code>和<code>Cache-Control</code>：</li></ol><ul><li>HTTP1.0 提供 Expires，值为一个绝对时间表示缓存新鲜日期</li><li>HTTP1.1 增加了 Cache-Control: max-age=,值为以秒为单位的最大新鲜时间</li></ul></li></ol></li><li><p>浏览器解析主机名</p></li><li><p>浏览器查询主机名的IP地址（DNS），过程如下：</p><ol><li>浏览器缓存</li><li>本机缓存</li><li>hosts 文件</li><li>路由器缓存</li><li>ISP DNS 缓存</li><li>DNS 递归查询（可能存在负载均衡导致每次 IP 不一样）</li></ol></li><li><p>浏览器解析端口号</p></li><li><p>浏览器发起TCP连接（三次握手）</p></li><li><p>浏览器向服务器发送一条HTTP GET报文</p></li><li><p>服务器向浏览器返回一条HTTP相应报文</p></li><li><p>关闭连接，浏览器解析文档</p></li><li><p>如果文档中有资源，重复6~8步骤，直至资源全部加载完毕</p></li></ol><h3 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h3><p>（1）首先客户端向服务器端发送一段TCP报文</p><p>（2）服务器端接收到来自客户端的TCP报文之后，结束LISTEN阶段。并返回一段TCP报文。</p><p>（3）客户端接收到来自服务器端的确认收到数据的TCP报文之后，明确了从客户端到服务器的数据传输是正常的，结束SYN-SENT阶段。并返回最后一段TCP报文。</p><p><img src="d8f9d72a6059252d20d93b0a6645fb3e59b5b9d2.jpeg"></p><h3 id="浏览器渲染的步骤"><a href="#浏览器渲染的步骤" class="headerlink" title="浏览器渲染的步骤"></a>浏览器渲染的步骤</h3><p>浏览器渲染的步骤：</p><ol><li>处理HTML标记并构建DOM树</li><li>处理CSS标记并构建CSSOM树</li><li>将DOM与CSSOM合并成一个渲染树</li><li>根据渲染树来布局，计算每个节点的布局信息</li><li>将各个节点绘制到屏幕上</li></ol><h2 id="首屏页面渲染优化"><a href="#首屏页面渲染优化" class="headerlink" title="首屏页面渲染优化"></a>首屏页面渲染优化</h2><ol><li><p>缩小webpack或者其他打包工具生成的包的大小，尽可能的减少生产环境下依赖的库数量，尽可能的按需引用，减少无用代码占的空间。可以使用<code>webpack-bundle-analyzer</code>的分析工具</p></li><li><p>使用服务端渲染的方式</p></li><li><p>使用预渲染的方式</p></li><li><p>脚本异步执行</p></li><li><p>按照页面或者组件分块懒加载</p><p>配置很简单，只需要在vue-router中添加一些简单的配置即可。</p><pre><code class="hljs js"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><span class="hljs-keyword">import</span> Router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span>Vue.use(Router);<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Router(&#123;  mode: <span class="hljs-string">&#x27;history&#x27;</span>,  linkActiveClass: <span class="hljs-string">&#x27;router-link-active&#x27;</span>,  routes: [    &#123;      path: <span class="hljs-string">&#x27;/&#x27;</span>,      <span class="hljs-comment">// 这里只需要把原来从外部引入的组件换成以下的语句就可以了</span>      component: <span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> <span class="hljs-built_in">require</span>([<span class="hljs-string">&#x27;../components/(你的组件)&#x27;</span>], resolve)    &#125;,  ]&#125;)</code></pre></li></ol><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="https://www.jianshu.com/p/b7b7a5904223">https://www.jianshu.com/p/b7b7a5904223</a><a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>渲染页面, 首屏渲染性能</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>前端工程化</title>
+    <link href="/2020/10/22/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    <url>/2020/10/22/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前端工程化"><a href="#前端工程化" class="headerlink" title="前端工程化"></a>前端工程化</h1><p>前端工程化应该从模块化、组件化、规范化、自动化四个方面来思考。</p><h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>模块化是<strong>将一个大文件拆分成相互依赖的小文件，再进行统一的拼装和加载</strong>。模块内部的数据与实现是私有的，只是向外暴露一些接口（方法）与外部模块通信。</p><p><strong>模块化的作用：</strong></p><ul><li><p>解决命名冲突</p></li><li><p>管理依赖</p></li><li><p>提高代码可读性</p></li><li><p>代码解耦，提高代码复用性</p></li></ul><br><h3 id="JS模块化"><a href="#JS模块化" class="headerlink" title="JS模块化"></a>JS模块化</h3><p>在ES6之前，JavaScript一直没有模块系统，这对开发大型复杂的前端工程造成了巨大的障碍。对此社区制定了一些模块加载方案，如CommonJS、AMD和CMD等。</p><p>现在ES6已经在语言层面上规定了模块系统，完全可以取代现有的CommonJS和AMD规范，而且使用起来相当简洁，并且有静态加载的特性。</p><h4 id="ES6模块化"><a href="#ES6模块化" class="headerlink" title="ES6模块化"></a>ES6模块化</h4><p>ES6的模块化分为导出（export）与导入（import）两个模块。</p><pre><code class="hljs js"><span class="hljs-keyword">import</span> ... from <span class="hljs-string">&quot;./...&quot;</span>;</code></pre><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;    myFn()&#123;        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;默认导出一个方法&quot;</span>    &#125;,    myVar:<span class="hljs-string">&quot;variable&quot;</span>&#125;</code></pre><h3 id="CSS模块化"><a href="#CSS模块化" class="headerlink" title="CSS模块化"></a>CSS模块化</h3><p>虽然SASS、LESS、Stylus等预处理器实现了CSS的文件拆分，但没有解决CSS模块化的一个重要问题：选择器的全局污染问题。</p><p>从工具层面，比较理想的解决方法是：</p><p>CSS Modules，仍然使用CSS，只是让JS来管理依赖。它能够最大化地结合CSS生态和JS模块化能力。Vue的scoped style也算是一种。</p><p>市面上的组件化框架很多，主要的有<a href="https://link.zhihu.com/?target=https://cn.vuejs.org/">Vue</a>、<a href="https://link.zhihu.com/?target=https://facebook.github.io/react/">React</a>、<a href="https://link.zhihu.com/?target=http://angular2.axuer.com/">Angular 2</a> 其区别其实Vue文档中的<a href="https://link.zhihu.com/?target=https://cn.vuejs.org/v2/guide/comparison.html">对比其他框架</a>一文已经讲得很详细了。</p><h2 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h2><div class="note note-info">            <p>模块化只是在文件层面上，对代码或资源的拆分；而组件化是在设计层面上，对UI（用户界面）的拆分。</p>          </div><p>从UI拆分下来的<strong>每个包含模板(HTML)+样式(CSS)+逻辑(JS)功能完备的结构单元，我们称之为组件。</strong>组件化更重要的是一种<strong>分治思想</strong>。</p><h2 id="规范化"><a href="#规范化" class="headerlink" title="规范化"></a>规范化</h2><p>模块化和组件化确定了开发模型，而这些东西的实现就需要规范去落实。规范化其实是工程化中很重要的一个部分，项目初期规范制定的好坏会直接影响到后期的开发质量。</p><p>规范化有以下一些内容：</p><ul><li>目录结构的制定</li><li>编码规范</li><li>前后端接口规范</li><li>文档规范</li><li>组件管理</li><li>Git分支管理</li><li>Commit描述规范</li><li>定期CodeReview</li><li>视觉图标规范</li></ul><p>其中编码规范最好采取<a href="https://link.zhihu.com/?target=http://eslint.cn/">ESLint</a>和StyleLint等强制措施，配置git hooks可以实现Lint不过不能提交代码等机制</p><h2 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h2><ul><li><p>图标合并 webpack</p></li><li><p>持续集成</p></li><li><p>自动化构建</p></li><li><p>自动化部署</p></li><li><p>自动化测试</p></li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://www.zhihu.com/question/24558375">https://www.zhihu.com/question/24558375</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>模块化</tag>
+      
+      <tag>工程化</tag>
+      
+      <tag>组件化</tag>
+      
+      <tag>规范化</tag>
+      
+      <tag>自动化</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>webpack（2）</title>
     <link href="/2020/10/22/webpack%EF%BC%882%EF%BC%89/"/>
     <url>/2020/10/22/webpack%EF%BC%882%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[<h1 id="webpack（2）"><a href="#webpack（2）" class="headerlink" title="webpack（2）"></a>webpack（2）</h1><h2 id="提取CSS成单独文件"><a href="#提取CSS成单独文件" class="headerlink" title="提取CSS成单独文件"></a>提取CSS成单独文件</h2><p>使用<code>mini-css-extract-plugin</code>提取CSS成单独文本</p><pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123;resolve&#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<span class="hljs-keyword">const</span> HtmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;html-webpack-plugin&#x27;</span>)<span class="hljs-keyword">const</span> MiniCssExtractPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mini-css-extract-plugin&#x27;</span>)<span class="hljs-built_in">module</span>.exports = &#123;entry: <span class="hljs-string">&#x27;./src/js/index.js&#x27;</span>,    output:&#123;        filename:<span class="hljs-string">&#x27;js/built.js&#x27;</span>,        path:resolve(__dirname,<span class="hljs-string">&#x27;build&#x27;</span>)    &#125;,    <span class="hljs-built_in">module</span>:&#123;        rules:[            &#123;                test:<span class="hljs-regexp">/\.css$/</span>,                <span class="hljs-comment">//style-loader创建style标签，用mini-css-extract-plugin的loader取代</span>                <span class="hljs-comment">//css-loader将css整合到js文件中</span>                use:[MiniCssExtractPlugin.loader,<span class="hljs-string">&#x27;css-loader&#x27;</span>]            &#125;        ]    &#125;,    plugins:[        <span class="hljs-keyword">new</span> HtmlWebpackPlugin(&#123;            template:<span class="hljs-string">&#x27;./src/index.html&#x27;</span>        &#125;),        <span class="hljs-keyword">new</span> MiniCssExtractPlugin(&#123;            filename:<span class="hljs-string">&#x27;css/built.css&#x27;</span>,            publicPath:<span class="hljs-string">&#x27;../&#x27;</span>        &#125;)    ]&#125;</code></pre><h2 id="CSS兼容性问题"><a href="#CSS兼容性问题" class="headerlink" title="CSS兼容性问题"></a>CSS兼容性问题</h2><p>兼容性处理需要的加载器：<code>postcss-loader</code>及插件：<code>postcss-preset-env</code></p><pre><code class="hljs js">&#123;    loader:<span class="hljs-string">&#x27;postcss-loader&#x27;</span>,        options:[            ident:<span class="hljs-string">&#x27;postcss&#x27;</span>,            plugins:<span class="hljs-function">()=&gt;</span>[                <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;postcss-preset-env&#x27;</span>)()            ]        ]&#125;</code></pre>]]></content>
+    <content type="html"><![CDATA[<h1 id="webpack（2）"><a href="#webpack（2）" class="headerlink" title="webpack（2）"></a>webpack（2）</h1><h2 id="提取CSS成单独文件"><a href="#提取CSS成单独文件" class="headerlink" title="提取CSS成单独文件"></a>提取CSS成单独文件</h2><p>使用<code>mini-css-extract-plugin</code>提取CSS成单独文本</p><pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123;resolve&#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<span class="hljs-keyword">const</span> HtmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;html-webpack-plugin&#x27;</span>)<span class="hljs-keyword">const</span> MiniCssExtractPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mini-css-extract-plugin&#x27;</span>)<span class="hljs-built_in">module</span>.exports = &#123;entry: <span class="hljs-string">&#x27;./src/js/index.js&#x27;</span>,    output:&#123;        filename:<span class="hljs-string">&#x27;js/built.js&#x27;</span>,        path:resolve(__dirname,<span class="hljs-string">&#x27;build&#x27;</span>)    &#125;,    <span class="hljs-built_in">module</span>:&#123;        rules:[            &#123;                test:<span class="hljs-regexp">/\.css$/</span>,                <span class="hljs-comment">//style-loader创建style标签，用mini-css-extract-plugin的loader取代</span>                <span class="hljs-comment">//css-loader将css整合到js文件中</span>                use:[MiniCssExtractPlugin.loader,<span class="hljs-string">&#x27;css-loader&#x27;</span>]            &#125;        ]    &#125;,    plugins:[        <span class="hljs-keyword">new</span> HtmlWebpackPlugin(&#123;            template:<span class="hljs-string">&#x27;./src/index.html&#x27;</span>        &#125;),        <span class="hljs-keyword">new</span> MiniCssExtractPlugin(&#123;            filename:<span class="hljs-string">&#x27;css/built.css&#x27;</span>,            publicPath:<span class="hljs-string">&#x27;../&#x27;</span>        &#125;)    ]&#125;</code></pre><h2 id="CSS兼容性问题"><a href="#CSS兼容性问题" class="headerlink" title="CSS兼容性问题"></a>CSS兼容性问题</h2><p>兼容性处理需要的加载器：<code>postcss-loader</code>及插件：<code>postcss-preset-env</code></p><pre><code class="hljs js">&#123;    loader:<span class="hljs-string">&#x27;postcss-loader&#x27;</span>,        options:[            ident:<span class="hljs-string">&#x27;postcss&#x27;</span>,            plugins:<span class="hljs-function">()=&gt;</span>[                <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;postcss-preset-env&#x27;</span>)()            ]        ]&#125;</code></pre><h2 id="js语法检查"><a href="#js语法检查" class="headerlink" title="js语法检查"></a>js语法检查</h2><pre><code class="hljs js"><span class="hljs-built_in">module</span>:&#123;    rules:[        <span class="hljs-comment">/*</span><span class="hljs-comment">          语法检查 eslint-loader eslint</span><span class="hljs-comment">          不检查第三方库</span><span class="hljs-comment">          设置检查规则：</span><span class="hljs-comment">              package.json eslintConfig中设置</span><span class="hljs-comment">              airbnb风格指南 --&gt; eslint-config-airbnb-base eslint-plugin-import eslint</span><span class="hljs-comment">       */</span>        &#123;            test:<span class="hljs-regexp">/\.js$/</span>,            exclude: <span class="hljs-regexp">/node_modules/</span>,             loader:<span class="hljs-string">&#x27;eslint-loader&#x27;</span>,            options:&#123;                fix:<span class="hljs-literal">true</span>            &#125;        &#125;    ]&#125;</code></pre><p>package.json设置<code>eslintConfig</code>：</p><pre><code class="hljs js"><span class="hljs-string">&quot;eslintConfig&quot;</span>:&#123;<span class="hljs-string">&quot;extends&quot;</span>: <span class="hljs-string">&quot;airbnb-base&quot;</span>&#125;</code></pre><h2 id="js兼容性处理"><a href="#js兼容性处理" class="headerlink" title="js兼容性处理"></a>js兼容性处理</h2><p>js兼容性处理：<code>babel-loader</code> ，<code>@babel/core</code></p><p>基本兼容性处理：<code>@babel/preset-env</code>，不能翻译<code>Promise</code></p><p>全部兼容性处理：<code>@babel/polyfill</code></p><p>按需处理兼容性：<code>core-js</code></p><pre><code class="hljs js">&#123;    test:<span class="hljs-regexp">/\.js$/</span>,    exclude: <span class="hljs-regexp">/node_modules/</span>,    loader:<span class="hljs-string">&#x27;babel-loader&#x27;</span>,    options:&#123;        <span class="hljs-comment">//预设：指示babel做怎样的兼容性处理</span>        presets:[<span class="hljs-string">&#x27;@babel/preset-env&#x27;</span>]    &#125;&#125;</code></pre>]]></content>
     
     
     <categories>
@@ -145,7 +496,9 @@
     
     <tags>
       
-      <tag>节流, 防抖</tag>
+      <tag>节流</tag>
+      
+      <tag>防抖</tag>
       
     </tags>
     
@@ -170,7 +523,9 @@
     
     <tags>
       
-      <tag>prototype, 原型链</tag>
+      <tag>prototype</tag>
+      
+      <tag>原型链</tag>
       
     </tags>
     
@@ -195,7 +550,11 @@
     
     <tags>
       
-      <tag>工厂模式, 构造函数模式, 原型模式，混合模式</tag>
+      <tag>工厂模式</tag>
+      
+      <tag>构造函数模式</tag>
+      
+      <tag>原型模式，混合模式</tag>
       
     </tags>
     
@@ -364,9 +723,9 @@
     
     <tags>
       
-      <tag>布局</tag>
+      <tag>CSS</tag>
       
-      <tag>css</tag>
+      <tag>布局</tag>
       
     </tags>
     

@@ -176,22 +176,22 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/09/18/linux/">linux概述</a>
+        <a href="/2020/10/22/diff%E7%AE%97%E6%B3%95/">diff算法</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/18/linux/">
+        <a href="/2020/10/22/diff%E7%AE%97%E6%B3%95/">
           
           
             
           
-          linux概述Linux的基本组件就像任何其他典型的操作系统一样，Linux拥有所有这些组件：内核，shell和GUI，系统实用程序和应用程序。Linux比其他操作系统更具优势的是每个方面都附带其他功能，所有代码都可以免费下载。
-linux内核Linux 系统的核心是内核。内核控制着计算机系统上的所有硬件和软件，在必要时分配硬件，并根据需要执行软件。
+          虚拟DOM的Diff算法vue和react的虚拟DOM的Diff算法大致相同，其核心是基于两个简单的假设：
 
-系统内存管理
-应用程序管理
-硬件设备管理
-文
+两个相同的组件产生类似的DOM结构，不同的组件产生不同的DOM结构。
+同一层级的一组节点，他们可以通过唯一的id进行区分。基于以上这两点假设，使得虚拟DOM的Diff算法的复杂度从O(n^3)降到了O(n)。
+
+
+使用key来给每个节点做一个唯一标识，Diff算法就可以正确的识别此节点，找
         </a>
       </p>
 
@@ -199,124 +199,8 @@ linux内核Linux 系统的核心是内核。内核控制着计算机系统上的
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-18 20:37" pubdate>
-              2020-09-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/linux/">linux</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/linux/">linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/16/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">linux常用指令</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/16/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
-          
-          
-            
-          
-          linux常用指令
-查看当前路径 pwd
-
-清屏： clear
-
-退出当前命令： ctrl+c 彻底退出
-
-执行睡眠 ： ctrl+z 挂起当前进程fg 恢复后台
-
-查看当前用户 id： id  / id 用户名
-[root@localhost ~]# id lamp
- uid=501(lamp) gid=501(lamp) groups=501(lamp)
-#能看到uid(用户ID)、gid(初
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-16 17:01" pubdate>
-              2020-09-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/linux/">linux</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/linux-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">linux 常用指令</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/07/vuex/">vuex</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/07/vuex/">
-          
-          
-            
-          
-          vuex
-vuex是一个专为vue.js应用程序开发的状态管理模式，它采用集中式存储管理应用的所有组件的状态，并且以相应的规则保证状态以一种可预测的方式发生变化。
-
-什么是“状态管理模式”？
-从一个简单的 Vue 计数应用开始：
-new Vue(&#123;
-  // state
-  data () &#123;
-    return &#123;
-      count: 0
-    &#125
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-07 16:51" pubdate>
-              2020-09-07
+            <time datetime="2020-10-22 22:26" pubdate>
+              2020-10-22
             </time>
           </div>
         
@@ -334,9 +218,9 @@ new Vue(&#123;
             
               <a href="/tags/vue/">vue</a>
             
-              <a href="/tags/vuex/">vuex</a>
+              <a href="/tags/%E8%99%9A%E6%8B%9FDOM/">虚拟DOM</a>
             
-              <a href="/tags/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/">状态管理</a>
+              <a href="/tags/diff/">diff</a>
             
           </div>
         
@@ -349,24 +233,27 @@ new Vue(&#123;
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/09/04/SASS-SCSS-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">SASS(SCSS)基本语法</a>
+        <a href="/2020/10/22/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%BF%87%E7%A8%8B/">浏览器渲染页面的过程</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/04/SASS-SCSS-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+        <a href="/2020/10/22/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%BF%87%E7%A8%8B/">
           
           
             
           
-          SASS使用变量sass使用$符号来标识变量（老版本的sass使用!来标识变量。）
-变量声明任何可以用作css属性值的赋值都可以用作sass的变量值。
-$highlight-color: #F90;
+          浏览器渲染页面的过程从 URL 输入到页面展现到底发生了什么？具体可参考《How Browsers Work》
+简单路径线：
 
-或以空格分割的多个属性值，
-$basic-border: 1px solid black;
+键盘或触屏输入URL并回车确认
 
-或以逗号分割的多个属性值，
-$plain-font: &quot;Myriad Pro&quot;,My
+浏览器查看缓存，如果请求资源在缓存中并且新鲜，跳转到转码步骤
+
+如果资源未缓存，发起新请求
+
+如果已缓存，检验是否足够新鲜，足够新鲜直接提供给客户端，否则与服务器进行验证。
+
+检验新鲜通常有两个 HTTP 头进行控制Expires和Cac
         </a>
       </p>
 
@@ -374,8 +261,8 @@ $plain-font: &quot;Myriad Pro&quot;,My
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-04 22:33" pubdate>
-              2020-09-04
+            <time datetime="2020-10-22 19:07" pubdate>
+              2020-10-22
             </time>
           </div>
         
@@ -391,9 +278,7 @@ $plain-font: &quot;Myriad Pro&quot;,My
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/sass/">sass</a>
-            
-              <a href="/tags/scss/">scss</a>
+              <a href="/tags/%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2-%E9%A6%96%E5%B1%8F%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD/">渲染页面, 首屏渲染性能</a>
             
           </div>
         
@@ -406,20 +291,31 @@ $plain-font: &quot;Myriad Pro&quot;,My
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/09/04/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E7%9A%84%E5%AE%9E%E7%8E%B0/">常见布局的实现（1）</a>
+        <a href="/2020/10/22/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/04/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E7%9A%84%E5%AE%9E%E7%8E%B0/">
+        <a href="/2020/10/22/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">
           
           
             
           
-          常见布局的实现（1）两侧固定，中间自适应的三栏布局
-&lt;div class=&quot;layout&quot;&gt;
-  &lt;div class=&quot;left&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mid&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;right&quot;&gt;&lt
+          前端工程化前端工程化应该从模块化、组件化、规范化、自动化四个方面来思考。
+模块化模块化是将一个大文件拆分成相互依赖的小文件，再进行统一的拼装和加载。模块内部的数据与实现是私有的，只是向外暴露一些接口（方法）与外部模块通信。
+模块化的作用：
+
+解决命名冲突
+
+管理依赖
+
+提高代码可读性
+
+代码解耦，提高代码复用性
+
+
+
+
+JS模块化在ES6之前，JavaScript一直没有模块系统，这对开发大型复杂
         </a>
       </p>
 
@@ -427,8 +323,8 @@ $plain-font: &quot;Myriad Pro&quot;,My
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-04 15:22" pubdate>
-              2020-09-04
+            <time datetime="2020-10-22 16:05" pubdate>
+              2020-10-22
             </time>
           </div>
         
@@ -443,78 +339,17 @@ $plain-font: &quot;Myriad Pro&quot;,My
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B8%83%E5%B1%80/">布局</a>
-            
-              <a href="/tags/css/">css</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/03/AMD%E5%92%8CCMD%E7%9A%84%E5%8C%BA%E5%88%AB/">前端模块化（AMD/CMD)</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/03/AMD%E5%92%8CCMD%E7%9A%84%E5%8C%BA%E5%88%AB/">
-          
-          
-            
-          
-          AMD/CMD模块化的理解什么是模块？
-
-将一个复杂程序依据一定的规范封装成模块（文件），并组合在一起；
-模块的内部数据与实现是私有的，只是向外暴露一些接口（方法）与外部模块通信。
-
-模块化的演变过程
-
-全局function模式
-将不同功能封装成不同的全局函数
-function m1()&#123;
-	//...
-&#125;
-function m2()&#123;
-	//...
-&#125;
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-03 19:52" pubdate>
-              2020-09-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AMD/">AMD</a>
-            
-              <a href="/tags/CMD/">CMD</a>
             
               <a href="/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/">模块化</a>
             
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">工程化</a>
+            
+              <a href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/">组件化</a>
+            
+              <a href="/tags/%E8%A7%84%E8%8C%83%E5%8C%96/">规范化</a>
+            
+              <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>
+            
           </div>
         
       </div>
@@ -526,28 +361,19 @@ function m2()&#123;
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/09/02/BFC/">BFC</a>
+        <a href="/2020/10/22/webpack%EF%BC%882%EF%BC%89/">webpack（2）</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/02/BFC/">
+        <a href="/2020/10/22/webpack%EF%BC%882%EF%BC%89/">
           
           
             
           
-          块级格式化上下文(BFC)
-这些规则允许元素建立自己内部的块级格式化上下文，包括：
-
-display属性值设置为inline-block或table-cell；
-float属性值不是none的元素；
-绝对定位的元素；
-overflow属性值不是visible的元素。
-
-
-BFC的布局规则
-属于同一个BFC的两个相邻盒子的margin会发生折叠。
-所有块级盒子的左边界默认与包含块的左边界对齐。
-BF
+          webpack（2）提取CSS成单独文件使用mini-css-extract-plugin提取CSS成单独文本
+const &#123;resolve&#125; = require(&#x27;path&#x27;)
+const HtmlWebpackPlugin = require(&#x27;html-webpack-plugin&#x27;)
+const MiniCssExtractPlu
         </a>
       </p>
 
@@ -555,8 +381,8 @@ BF
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-02 22:26" pubdate>
-              2020-09-02
+            <time datetime="2020-10-22 00:08" pubdate>
+              2020-10-22
             </time>
           </div>
         
@@ -572,13 +398,7 @@ BF
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/CSS/">CSS</a>
-            
-              <a href="/tags/BFC/">BFC</a>
-            
-              <a href="/tags/block-formatting-context/">block formatting context</a>
-            
-              <a href="/tags/%E5%9D%97%E7%BA%A7%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%96%87/">块级格式化上下文</a>
+              <a href="/tags/webpack/">webpack</a>
             
           </div>
         
@@ -591,42 +411,21 @@ BF
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/09/02/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">前端常见的兼容性解决方案</a>
+        <a href="/2020/10/21/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">开发环境配置</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/02/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+        <a href="/2020/10/21/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
           
           
             
           
-          浏览器兼容性问题及解决方案常见的浏览器内核：常见的浏览器内核可以分为4种：Trident、Gecko、Blink、Webkit
-
-
-
-浏览器
-内核
-
-
-
-IE
-Trident内核，也称为IE内核
-
-
-chrome
-Webkit内核，现在是Blink内核
-
-
-Firefox
-Gecko内核，也称为Firefox内核
-
-
-Safari
-Webkit内核
-
-
-Opera
-最初是Presto内核，后采用W
+          开发环境配置对webpack的总结，webpack.config.js配置如下：
+const &#123; resolve &#125; = require(&#x27;path&#x27;)
+const HtmlWebpackPlugin = require(&#x27;html-webpack-plugin&#x27;)
+//向外暴露一个对象
+module.exports = &#123;
+ 
         </a>
       </p>
 
@@ -634,8 +433,8 @@ Opera
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-02 20:03" pubdate>
-              2020-09-02
+            <time datetime="2020-10-21 23:33" pubdate>
+              2020-10-21
             </time>
           </div>
         
@@ -651,7 +450,7 @@ Opera
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/">浏览器兼容性</a>
+              <a href="/tags/webpack/">webpack</a>
             
           </div>
         
@@ -664,22 +463,16 @@ Opera
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/09/02/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%8Epromise/">回调函数与promise</a>
+        <a href="/2020/10/21/Nodejs/">Nodejs</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/02/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%8Epromise/">
+        <a href="/2020/10/21/Nodejs/">
           
           
             
           
-          回调函数、promise与async/await语法糖回调函数回调函数是一个通过指针调用的函数，函数指针将作为参数传递给另一个函数。
-// 给click方法做参数的匿名函数就是一个回调函数
-$(&quot;body&quot;).click(function() &#123;
-    alert(`clicked on body`);
-&#125;);
-
-回调可以是同步的也可以是异步的，但异步必须
+          node.js
         </a>
       </p>
 
@@ -687,8 +480,212 @@ $(&quot;body&quot;).click(function() &#123;
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-02 19:46" pubdate>
-              2020-09-02
+            <time datetime="2020-10-21 23:10" pubdate>
+              2020-10-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/nodejs/">nodejs</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/nodejs/">nodejs</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/21/%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BAbase64%E6%A0%BC%E5%BC%8F%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9/">图片转换为base64格式的优缺点</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/21/%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BAbase64%E6%A0%BC%E5%BC%8F%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9/">
+          
+          
+            
+          
+          图片转换为base64格式的优缺点优点
+（1）base64格式的图片是文本格式，占用内存小，转换后的大小比例大概为1/3，降低了资源服务器的消耗；
+（2）网页中使用base64格式的图片时，不用再请求服务器调用图片资源，减少了服务器访问次数。
+缺点
+（1）base64格式的文本内容较多，存储在数据库中增大了数据库服务器的压力；
+（2）网页加载图片虽然不用访问服务器了，但因为base64格式的内容太
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-21 22:39" pubdate>
+              2020-10-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/base64/">base64</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/21/webpack/">webpack</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/21/webpack/">
+          
+          
+            
+          
+          webpackwebpack是一个模块打包工具，可以使用它管理项目中的模块依赖，并编译输出模块所需的静态文件。它可以很好地管理、打包开发中所用到的HTML，CSS，JavaScript和静态文件（图片，字体）等，让开发更高效。对于不同类型的依赖，webpack有对应的模块加载器，而且会分析模块间的依赖关系，最后合并生成优化的静态资源。
+与gulp，grunt的区别区别：webpack支持代码分割，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-21 20:32" pubdate>
+              2020-10-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/webpack/">webpack</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/21/%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/">节流与防抖</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/21/%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/">
+          
+          
+            
+          
+          节流（throttle）与防抖（debounce）应用场景
+因频繁执行DOM操作，资源加载等行为，导致UI停顿甚至浏览器崩溃。
+
+window对象频繁的onresize,onscroll等事件
+拖拽的mousemove事件
+射击游戏的mousedown，keydown事件
+文字输入，自动完成的keyup事件
+
+比如每次mouseover就会触发一次函数，又比如每次搜索一下就会向服务器发送一个请求，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-21 20:22" pubdate>
+              2020-10-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%8A%82%E6%B5%81/">节流</a>
+            
+              <a href="/tags/%E9%98%B2%E6%8A%96/">防抖</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/14/%E5%8E%9F%E5%9E%8B%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型及原型链</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/14/%E5%8E%9F%E5%9E%8B%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE/">
+          
+          
+            
+          
+          原型及原型链原型对象理解原型对象只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor（构造函数）属性，这个属性是一个指向prototype属性所在函数的指针。以前例来说，Person.prototype.constructor指向Person。通过这个构造函数，可以继续为原型
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-14 21:08" pubdate>
+              2020-10-14
             </time>
           </div>
         
@@ -704,72 +701,9 @@ $(&quot;body&quot;).click(function() &#123;
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/">回调函数</a>
+              <a href="/tags/prototype/">prototype</a>
             
-              <a href="/tags/promise/">promise</a>
-            
-              <a href="/tags/async/">async</a>
-            
-              <a href="/tags/await/">await</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/01/this-%E5%85%B3%E9%94%AE%E8%AF%8D/">this 关键词</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/01/this-%E5%85%B3%E9%94%AE%E8%AF%8D/">
-          
-          
-            
-          
-          this 关键词本文仅讨论函数的内部属性 this 在 JavaScript 中的表现
-
-this引用的是函数执行的环境对象。
-
-call和apply每个函数都包含两个非继承而来的方法：apply()和call()。这两个方法的用途都是在特定的作用域中调用函数，实际上等于设置函数体内this对象的值。
-使用这两个方法扩充函数的作用域的最大好处，就是对象不需要与方法有任何耦合关系。
-
-
-
-
-函数作用
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-01 21:21" pubdate>
-              2020-09-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/JS/">JS</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/this/">this</a>
-            
-              <a href="/tags/js/">js</a>
+              <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
             
           </div>
         
@@ -781,7 +715,7 @@ call和apply每个函数都包含两个非继承而来的方法：apply()和call
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   
