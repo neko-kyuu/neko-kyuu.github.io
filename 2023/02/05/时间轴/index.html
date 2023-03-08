@@ -1,0 +1,668 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="neko kyuu">
+  <meta name="keywords" content="">
+  <title>时间轴 - 自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>迦巴勒幻想图书馆</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/bg2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2023-02-05 22:34" pubdate>
+      2023年2月5日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">时间轴</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="时间轴"><a href="#时间轴" class="headerlink" title="时间轴"></a>时间轴</h1><p>稍作省略，大致上如下。</p>
+<table style="width:100%;text-align:center">
+<thead>
+<tr>
+<th colspan="2" style="width:20%;">年历表</th>
+<th style="width:15%;">地区</th>
+<th style="width:65%;">主要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+    <td rowspan="6">前传</td>
+<td>元年</td>
+<td>达尔马斯卡</td>
+<td style="text-align:left">即本作145年前，是年初夏，维洛出生。</td>
+</tr>
+<tr>
+<td>12年</td>
+<td>远东</td>
+<td style="text-align:left">即第六星历1547年，达尔马斯卡陷落，尚还年幼的维洛带着母亲的遗物随同乡流亡至东国，被远东人族收养。</td>
+</tr>
+<tr>
+<td>15年</td>
+<td>远东</td>
+<td style="text-align:left">维洛（当时15岁）性别分化。</td>
+</tr>
+<tr>
+<td>42年</td>
+<td>-</td>
+<td style="text-align:left">即1577年，迈入第七星历，ff当前时间。</td>
+</tr>
+<tr>
+<td>45年</td>
+<td>远东</td>
+<td style="text-align:left">维洛使用个人资产购入白51土地，并且推平重建，或许是意在作为摇钱树、送终人的时期结束。</td>
+</tr>
+<tr> 
+<td>49年</td>
+<td>-</td>
+<td style="text-align:left">即本作正传元年。</td>
+</tr>
+<tr>
+    <td rowspan="31">正传</td>
+<td>元年</td>
+<td>远东</td>
+<td style="text-align:left">维洛经熟人推荐坐上了去往艾欧泽亚的船，从此走上资产无底洞的富豪之路。</td>
+</tr>
+<tr>
+<td>7年</td>
+<td>乌尔达哈</td>
+<td style="text-align:left">维洛凭借强运和勤奋积累大量财富后定居于此（主要是靠赌博）。<br>顺便一提，这座可以从自家阳台俯瞰雄心广场的房子和白51，现在都归属于伊斯名下。</td>
+</tr>
+<tr>
+<td>44年</td>
+<td>达尔马斯卡</td>
+<td style="text-align:left">莱文哈特出生于星芒节前夕的雪夜，次年春，其异母的手足埃尔维斯出生。（在两人先后性别分化之前是最亲密无间的家人。目前到底算什么关系，谁知道呢。）</td>
+</tr>
+<tr>
+<td>54年</td>
+<td>多玛</td>
+<td style="text-align:left">是年秋，信子·鸟追出生，但从小身体羸弱，由本家送到分家抚养。</td>
+</tr>
+<tr>
+<td>59年前后</td>
+<td>达尔马斯卡</td>
+<td style="text-align:left">莱文哈特（当时14岁）性别分化。</td>
+</tr>
+<tr>
+<td>60年</td>
+<td>格里达尼亚</td>
+<td style="text-align:left">是年秋，维·蕾伊·玛夏出生。</td>
+</tr>
+<tr>
+<td>61年前后</td>
+<td>达尔马斯卡</td>
+<td style="text-align:left">埃尔维斯（当时16岁）性别分化。<br>维洛领养莱文哈特和埃尔维斯。</td>
+</tr>
+<tr>
+<td>62年前后</td>
+<td>利姆萨罗敏萨</td>
+<td style="text-align:left">维埃拉在此拓展人脉的时期，为将来的商业合作关系奠定了基础。</td>
+</tr>
+<tr>
+<td>64年</td>
+<td>利姆萨罗敏萨</td>
+<td style="text-align:left">莱文哈特（当时20岁）成为锻铁行会学徒。</td>
+</tr>
+<tr>
+<td>65年</td>
+<td>达尔马斯卡</td>
+<td style="text-align:left">是年春，伊斯出生于一场不愉快的关系。</td>
+</tr>
+<tr>
+<td>67年</td>
+<td>格里达尼亚</td>
+<td style="text-align:left">是年夏，薇·恩波洛出生。</td>
+</tr>
+<tr>
+<td>69年</td>
+<td>多玛</td>
+<td style="text-align:left">是年初冬，钟铃·鸟追出生，主要由二姐信子抚养。</td>
+</tr>
+<tr>
+<td>72年</td>
+<td>达尔马斯卡</td>
+<td style="text-align:left">伊斯（当时7岁）和母亲彻底决裂，从此靠自己独立过活。</td>
+</tr>
+<tr>
+<td>73年</td>
+<td>格里达尼亚</td>
+<td style="text-align:left">薇（当时6岁）作为传统刻木匠家庭的下一代成为行会学徒。</td>
+</tr>
+<tr>
+<td>74年</td>
+<td>达尔马斯卡</td>
+<td style="text-align:left">是年秋，弥亚出生。</td>
+</tr>
+<tr>
+<td>76年</td>
+<td>利姆萨罗敏萨</td>
+<td style="text-align:left">为了彻底处理弟弟的私人恩怨，莱文哈特（当时32岁）左眼从此失明，并结束了作为海盗的时期。</td>
+</tr>
+<tr>
+<td rowspan="2">80年</td>
+<td rowspan="2">达尔马斯卡</td>
+<td style="text-align:left">伊斯（当时15岁）性别分化。<br>维洛领养伊斯，作为其最后一任徒弟。</td>
+</tr>
+<tr>
+<td style="text-align:left">同年春，莱斯利出生。</td>
+</tr>
+<tr>
+<td rowspan="2">82年前后</td>
+<td>格里达尼亚</td>
+<td style="text-align:left">由于事业受阻，蕾伊被迫结束巡演活动，回到出身地。</td>
+</tr>
+<tr>
+<td>远东</td>
+<td style="text-align:left">维洛和伊斯在居住远东的时期对白51旧居进行了扩建，建造中庭，布置许愿竹，但是没扩建完。后来在沙都有了花园，这边就烂尾了。</td>
+</tr>
+<tr>
+<td>84年前后</td>
+<td>利姆萨罗敏萨</td>
+<td style="text-align:left">伊斯随维洛渡海前往艾欧泽亚，此后莱文哈特教导了他战士的技巧。</td>
+</tr>
+<tr>
+<td>88年</td>
+<td>达尔马斯卡</td>
+<td style="text-align:left">弥亚（当时14岁）性别分化。伊斯接受维洛的建议回到故乡，并且领养了弥亚。按其本人的说法，反正也是随便选一个，那就带走自己粘上来的吧。</td>
+</tr>
+<tr>
+<td rowspan="2">89年前后</td>
+<td>延夏</td>
+<td style="text-align:left">钟铃（当时20岁）在延夏遇险时被两位维埃拉旅人所救，从此结下了深厚的友谊。</td>
+</tr>
+<tr>
+<td>远东</td>
+<td style="text-align:left">在鸟追家逗留了一段时间后回到白51过安逸生活。</td>
+</tr>
+<tr>
+<td>90年</td>
+<td>利姆萨罗敏萨</td>
+<td style="text-align:left">信子远嫁。</td>
+</tr>
+<td rowspan="2">93年前后</td>
+<td>远东</td>
+<td style="text-align:left">发生了一些差点让伊斯死掉的意外，弥亚无法面对这个心结而选择逃避，全部托付给钟铃后独自前往艾欧泽亚。</td>
+</tr>
+<tr>
+<td>利姆萨罗敏萨</td>
+<td style="text-align:left">数月后，伊斯和钟铃一起坐船前往利姆萨罗敏萨，之后大部分时间在海雾村过隐居生活。</td>
+</tr>
+<tr>
+<td>94年</td>
+<td>乌尔达哈</td>
+<td style="text-align:left">伊斯寄给莱文哈特的信件被误送到埃尔维斯那里，不久后，后者以哥哥的名义开始与弥亚接触。</td>
+</tr>
+<tr>
+<td rowspan="2">96年前后<br>（现在）</td>
+<td>-</td>
+<td style="text-align:left">弥亚从萨雷安接回伊斯，以两个人的名义领养莱斯利（当时16岁）。<br>完婚后定居于乌尔达哈。</td>
+</tr>
+<tr>
+<td>利姆萨罗敏萨</td>
+<td style="text-align:left">鸟追家与维埃拉合作关系的达成，详见莱铃篇。</td>
+</tr>
+</tbody></table>
+
+
+
+
+
+
+
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%BE%E5%AE%9A/">设定</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%BE%E5%AE%9A/">设定</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/20/%E6%9D%82%E8%B0%88-3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">莱铃篇</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/06/%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BA%BA%E6%A0%BC%E5%88%86%E6%9E%90/">
+                        <span class="hidden-mobile">简介及人格分析</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 6,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "时间轴&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
